@@ -1,0 +1,22 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+//Google Material Icons
+@import 'material-icons/iconfont/outlined.css';
+
+// Select2
+@import "select2/dist/css/select2.css";
+
+//Toastr
+@import 'toastr/toastr';
+
+//Custom CSS
+@import '/resources/css/src/app.css';
+@import '/resources/css/src/custom.css';

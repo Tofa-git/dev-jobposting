@@ -1,0 +1,273 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{width: 10px; height: 10px;}
+::-webkit-scrollbar-track{background: rgba(64,128,255,0.25);}
+::-webkit-scrollbar-thumb{background: rgba(0,0,0,0.25); margin: 0px 3px; border: 1px solid #888888}
+::-webkit-scrollbar-thumb:hover{background: rgba(255,128,64,0.5); transition: all 0.5s; border: 1px solid #aaaaaa}
+
+.bg-forestGreen{background-color: forestGreen!important}
+.bg-feminim{background-color: #853266!important;}
+.bg-midnightBlue{background-color: midnightBlue!important;}
+.bg-white{background-color: white;}
+.bg-darkOrange{background-color: darkOrange!important;}
+.bg-darkGreen{background-color: darkGreen!important;}
+.bg-customGray{
+    background: #d6f9ff;
+    background: -moz-linear-gradient(top,  #d6f9ff 0%, #9ee8fa 100%);
+    background: -webkit-linear-gradient(top,  #d6f9ff 0%,#9ee8fa 100%);
+    background: linear-gradient(to bottom,  #d6f9ff 0%,#9ee8fa 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 );
+}
+
+.bg-teal-hover:hover{
+    background-color: rgba(0,0,0,0.25);
+    transition: all .5s;
+}
+.bg-light-hover:hover{
+    background-color: rgba(0,0,0,0.1);
+    transition: all .5s;
+}
+.text-white{color: white;}
+.text-feminim{color: #853266!important;}
+.text-gray25{color: #dddddd;}
+.text-lightBlue{color: lightBlue;}
+.text-hover-underline:hover{
+    text-decoration: underline!important;
+}
+
+.dropdown-menu{
+    border-top: 5px solid midnightBlue;
+    border-bottom: 5px solid midnightBlue;
+}
+
+.dropdown .dropdown-menu {
+    animation-name: dropdownAnimation;
+    animation-duration: .5s;
+    -webkit-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition: all .1s linear;
+    opacity: 1;
+    margin-top: 0px;
+}
+
+.dropdown .dropdown-menu{  
+    opacity: 0; display:
+}
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+@keyframes dropdownAnimation {
+    from {
+        margin-top: 25px;
+        opacity: 0;
+        -webkit-transition: all .1s linear;
+        -o-transition: all .1s linear;
+        transition: all .1s linear;
+    }
+    to {
+        -webkit-transition: all .2s linear;
+        -o-transition: all .2s linear;
+        transition: all .2s linear;
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+nav .navbar-brand > img{
+	height: 60px;
+	width: auto;
+}
+
+nav .navbar-brand > div > .title{
+	font-size: 14pt;
+	font-weight: bold;
+	margin-left: 7px;
+	line-height: 20px;
+}
+
+nav .navbar-brand > div > .sub-title{
+	font-size: 11pt!important;
+	line-height: 15px;
+	margin-left: 7px;
+}
+
+main{
+	margin-top: 60px;
+}
+
+.navbar-nav > .nav-item > .active{
+    font-family: "Abel", sans-serif;
+	font-weight: bold!important;
+	font-size: 12pt;
+}
+
+.navbar-nav > .nav-item > .nav-link{
+    color: #eeeeee!important;
+    font-family: "Abel", sans-serif;
+	font-weight: lighter;
+	font-size: 12pt;
+}
+
+.navbar-nav > .nav-item > .nav-link:hover{
+	color: yellow!important;
+}
+
+/*Tab Custom*/
+.tab-custom{
+    display: inline-flex;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: auto;
+    height: auto;
+    overflow-x: auto; 
+}
+
+.tab-custom > li{
+    display: inline-grid;
+    height: auto;
+}
+
+.tab-custom > li > a{
+    color: #aaaaaa;
+    text-decoration: none;
+    white-space: nowrap;
+    height: auto;
+    display: inline;
+    padding: 5px 30px;
+}
+
+.tab-custom > li > a:hover{
+    background-color: #eeeeee;
+    color: blue;
+    transition: all .5s;
+}
+
+.tab-custom > li > .active{
+    padding: 5px 30px;
+    background-color: white;
+    border-bottom: 2px solid darkOrange;
+    white-space: nowrap;
+    color: black;
+    font-weight: bold;
+    height: auto;
+    display: inline;
+}
+
+.btn-medsos{
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.25);
+    color: white!important;
+    text-decoration: none;
+    opacity: .5;
+}
+
+.btn-medsos:hover{
+    opacity: .9;
+}
+
+@media (max-width: 575.98px) {
+    .logo-footer{
+        transform: scale(0.8)!important;
+        align-self: flex-start;
+    }
+}
+
+@media (min-width: 576px) {
+    .logo-footer{
+        transform: scale(0.8)!important;
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .logo-footer{
+        transform: scale(0.8)!important;
+        align-self: flex-start;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .logo-footer{
+        transform: scale(0.8)!important;
+        align-self: flex-start;
+    }
+}
+
+.excel-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.excel-table > thead > tr > th{
+    font-size: 10pt;
+    font-weight: bold;
+    background: #f6f8f9;
+    background: -moz-linear-gradient(top,  #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%);
+    background: -webkit-linear-gradient(top,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+    background: linear-gradient(to bottom,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=0 );
+    color: black;
+    padding: 3px 7px;
+    border-top: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    white-space: nowrap;
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    cursor: default;
+    box-shadow: 1px 1px 3px #dddddd;
+}
+
+.excel-table > tbody > tr > td{
+    font-size: 10pt;
+    font-weight: lighter;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    padding: 3px 7px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: nowrap;
+}
+
+.excel-table > tbody > tr > td:nth-child(1){
+    background: #f6f8f9;
+    background: -moz-linear-gradient(top,  #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%);
+    background: -webkit-linear-gradient(top,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+    background: linear-gradient(to bottom,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=0 );
+    border-top: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
+    cursor: default;
+}
+
+.excel-table > tbody > tr:hover{
+    background-color: rgba(0,0,0,0.1)!important;
+    transition: all 0.25s;
+}
+
+.excel-table > tfoot > tr > td{
+    font-size: 9pt;
+    font-weight: bold;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    padding: 3px 7px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: nowrap;
+    background-color: rgba(0,0,0,0.1);
+}
