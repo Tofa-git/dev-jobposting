@@ -1,4 +1,4 @@
 *
-!migrations/
-!upload/
+migrations/
+upload/
 !.gitignore
