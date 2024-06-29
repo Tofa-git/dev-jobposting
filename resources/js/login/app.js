@@ -1,9 +1,3 @@
-document.body.addEventListener('click', function (evt) {
-    if (evt.target.className === 'clearValue') {
-        alert('123');
-    }
-}, false);
-
 $(document).on('click', '.hideShowPassword', function(e){
 	e.preventDefault();
 	if(e.which===1){

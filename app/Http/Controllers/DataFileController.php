@@ -109,11 +109,12 @@ class DataFileController extends Controller
                     'mimes' => 'Type file yang anda upload tidak diizinkan!',
                     'max' => 'Maksimal ukuran file yang izinkan 2MB!',
                     'required' => ':attribute tidak boleh kosong!',
-                    'description.regex' => 'Deskripsi yang anda masukkan mengandung karakter yang dilarang!'
+                    'regex' => ':attribute yang anda masukkan mengandung karakter yang dilarang!'
                 ]
             );
             if ($validator->fails()){
                 $_result = view('backend.file management.create')
+                    -> withErrors($validator)
                     -> render();
                 $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
                 return Redirect::to(route('file-management.index'))
@@ -163,15 +164,17 @@ class DataFileController extends Controller
             $validator = Validator::make($request->all(),
                 [
                     'description'   => 'nullable|regex:/^[a-zA-Z0-9\s\-\,\(\)]+$/',
+                    'alt_key'   => 'nullable|regex:/^[a-zA-Z0-9\s\-\,\.]+$/',
                 ],
                 [
-                    'description.regex' => 'Deskripsi yang anda masukkan mengandung karakter yang dilarang!'
+                    'regex' => ':attribute yang anda masukkan mengandung karakter yang dilarang!'
                 ]
             );
             if ($validator->fails()){
                 $_data = data_file::where('id', $id)
                     -> first();
                 $_result = view('backend.file management.edit')
+                    -> withErrors($validator)
                     -> with('title', $this->namaMenu)
                     -> with('data', $_data)
                     -> render();
@@ -185,7 +188,8 @@ class DataFileController extends Controller
             }
             data_file::where('id', $id)
                 -> update([
-                'description'   => $request->description,
+                    'description'   => $request->description,
+                    'alt'           => $request->alt_key,
             ]);
             logActivities::addToLog('File Information', 'Update file information', $request->description, '0');
             return Redirect::to(route('file-management.index'))

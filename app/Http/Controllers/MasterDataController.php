@@ -105,6 +105,7 @@ class MasterDataController extends Controller
             );
             if ($validator->fails()){
                 $_result = view('backend.master data.create')
+                    -> withErrors($validator)
                     -> render();
                 $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
                 return Redirect::to(route('master-data.index'))
@@ -165,6 +166,7 @@ class MasterDataController extends Controller
                 $_data = master_data::where('id', $id)
                     -> first();
                 $_result = view('backend.master data.edit')
+                    -> withErrors($validator)
                     -> with('title', $this->namaMenu)
                     -> with('data', $_data)
                     -> render();

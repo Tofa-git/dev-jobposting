@@ -10,7 +10,7 @@
 					</div>
 					<div class="col-sm-9 mt-2">
 						<div class="d-flex">
-							<input placeholder="Nama Lengkap" type="text" class="auto_focus form-control bg-white rounded-0" value="{{ $data->name }}" name="nama" id="nama" required />
+							<input placeholder="Nama Lengkap" type="text" class="auto_focus form-control bg-white rounded-0 @error('nama') is-invalid @enderror" value="{{ $data->name }}" name="nama" id="nama" maxlength="32" required />
 							<div class="p-2 bg-secondary d-flex clearValue" style="cursor: pointer" title="Hapus">
 								<i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
 							</div>

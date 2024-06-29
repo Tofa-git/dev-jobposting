@@ -1,7 +1,7 @@
 <div class="bg-light">
 <div class="container">
-<div class="mt-4 pb-4 pt-4">
-	<div class="d-flex justify-content-center">
+<div class="pb-4 pt-4">
+	<div class="mt-3 d-flex justify-content-center">
 		<h3 class="d-flex align-items-center">
 			<div style="width: 50px">
 				<div style="border-top: 1px solid #cccccc; height: 1px;"></div>

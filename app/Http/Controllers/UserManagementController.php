@@ -117,8 +117,8 @@ class UserManagementController extends Controller
         if(User::canCreate($this->namaMenu)){
             $validator = Validator::make($request->all(),
                 [
-                    'nama'                  => 'required|regex:/^[a-zA-Z0-9\s\-\_\.]+$/',
-                    'email'                 => 'required|min:8|regex:/^[a-zA-Z0-9\s\-\_\.\@]+$/',
+                    'nama'                  => 'required|max:32|regex:/^[a-zA-Z0-9\s\-\_\.]+$/',
+                    'email'                 => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\s\-\_\.\@]+$/',
                     'jenis_account'         => 'required|numeric|gt:0',
                     'password'              => 'required|min:8',
                     'password_confirmation' => 'required|min:8|same:password',
@@ -128,6 +128,7 @@ class UserManagementController extends Controller
                     'regex' => ':attribute mengandung karakter yang dilarang!',
                     'gt' => 'Jenis account belum dipilih!',
                     'min' => 'Jumlah karakter :attribute minimal 8 karakter!',
+                    'max' => 'Jumlah karakter :attribute melebihi yang diizinkan!'
                 ]
             );
             if ($validator->fails()){
@@ -135,6 +136,7 @@ class UserManagementController extends Controller
                     -> where('refid', 1)
                     -> get();
                 $_result = view('backend.user management.create')
+                    -> withErrors($validator)
                     -> with('title', $this->namaMenu)
                     -> with('jenis_account', $_jenis_account)
                     -> with('ref', @$request->role_account)
@@ -231,6 +233,7 @@ class UserManagementController extends Controller
                     -> get();
                 $_data = User::where('id', $id)->first();
                 $_result = view('backend.user management.edit')
+                    -> withErrors($validator)
                     -> with('title', $this->namaMenu)
                     -> with('data', $_data)
                     -> with('jenis_account', $_jenis_account)

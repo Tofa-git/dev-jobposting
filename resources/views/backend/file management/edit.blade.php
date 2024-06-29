@@ -16,7 +16,11 @@
 						<div class="small text-muted">Real Name:</div>
 						<span class="small">{{ $data->filename }}</span>
 						<div class="mt-2 small text-muted">File Descriptions:</div>
-						<textarea class="auto_focus form-control bg-white rounded-0 p-0" rows="4" name="description" id="description">{!! $data->description !!}</textarea>
+						<textarea class="auto_focus form-control bg-white rounded-0 p-0 @error('description') is-invalid @enderror" rows="4" name="description" id="description">{!! $data->description !!}</textarea>
+						@if($data->type === 'pictures')
+							<div class="mt-2 small text-muted">Alternative Key:</div>
+							<input type="text" class="form-control bg-white rounded-0 @error('alt_key') is-invalid @enderror" name="alt_key" id="alt_key" value="{{ $data->alt_key }}" />
+						@endif
 					</div>
 				</div>
 				<hr />

@@ -69,53 +69,30 @@ class general
     }
 
 	public static function getToken($req){
-        $date = now();
-        date_add($date, date_interval_create_from_date_string("3 days"));
-        $data = [
-            'user'          => \Auth::user()->email,
-            'role'          => \Auth::user()->role,
-            'token'         => env('API_KEY'),
-            'expiration'    => date_format($date, 'Y-m-d h:i:s'),
-        ];
-        $token = base64_encode(json_encode($data));
-        $depth = rand(3,7);
-        $result = [
-            'header'    => $req->header('referer'),
-            'agent'     => $req->header('user-agent'),
-            'payload'   => $token,
-        ];
-        for($_i=0; $_i<$depth; $_i++){
-            $result = base64_encode(json_encode($result));
-        }
-        $result = substr_replace($result, $depth, 16, 0);
-        return $result;
-
-        /*
-		$_user = \Auth::user();
-		if(is_null($_user->access_token)){
-	    	$url = env('API_HOST')."/auth/create-token";
-    		$headers = [
-    			'Accept'        => 'application/json',
-    			'Content-Type'  => 'application/json',
-	    	];
-    		$options = [
-    			'verify' => false,
-	    	];
-    		$param = [
-    			'user' => $_user->email,
-    			'role' => $_user->role,
-	    		'token' => env('API_KEY'),
-    		];
-    		$_result = Http::withHeaders($headers)
-    			-> withOptions($options)
-	    		-> post($url, $param)
-    			-> json();
+        $_user = \Auth::user();
+        if(is_null($_user->access_token)){
+            $url = env('API_HOST')."/auth/create-token";
+            $headers = [
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/json',
+            ];
+            $options = [
+                'verify' => false,
+            ];
+            $param = [
+                'user' => $_user->email,
+                'role' => $_user->role,
+                'token' => env('API_KEY'),
+            ];
+            $_result = Http::withHeaders($headers)
+                -> withOptions($options)
+                -> post($url, $param)
+                -> json();
             $_hasil = json_decode(json_encode(@$_result));
-    		return @$_hasil->token;
-    	}else{
-    		return null;
-    	}
-        */
+            return @$_hasil->token;
+        }else{
+            return null;
+        }
 	}
 
     public static function checkFolder($_check_ext){

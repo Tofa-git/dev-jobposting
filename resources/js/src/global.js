@@ -5,11 +5,29 @@ export function checkSubmission(form){
 }
 
 export function disabledButton(obj){
-	obj.getElementsByTagName('span')[0].innerText = 'Process...';
+	let _check = obj.tagName;
+	if(_check === 'BUTTON'){
+		obj.getElementsByTagName('i')[0].classList.add('visually-hidden');
+		obj.getElementsByTagName('div')[0].classList.remove('visually-hidden');
+		obj.classList.remove("btn-warning");
+		obj.classList.add("btn-secondary");
+	}
 	obj.disabled = true;
 }
 
+export function enabledButton(obj){
+	let _check = obj.tagName;
+	if(_check === 'BUTTON'){
+		obj.getElementsByTagName('i')[0].classList.remove('visually-hidden');
+		obj.getElementsByTagName('div')[0].classList.add('visually-hidden');
+		obj.classList.remove("btn-secondary");
+		obj.classList.add("btn-warning");
+	}
+	obj.disabled = false;
+}
+
 export function loadSmallContent(_this){
+	disabledButton(_this);
 	var href = _this.getAttribute('data-attr');
 	$.ajax({
 		url: href,
@@ -22,9 +40,11 @@ export function loadSmallContent(_this){
 			const myModal = new bootstrap.Modal(document.getElementById('appForm'), {
 				keyboard: false
 			});
+			enabledButton(_this);
 			myModal.show();
 		},
 		error: function(jqXHR, testStatus, error) {
+			enabledButton(_this);
 			alert("Page " + href + " cannot open. Error:" + error);
 			$('#loader').hide();
 		}
@@ -32,6 +52,7 @@ export function loadSmallContent(_this){
 }
 
 export function loadMediumContent(_this){
+	disabledButton(_this);
 	var href = _this.getAttribute('data-attr');
 	$.ajax({
 		url: href,
@@ -44,11 +65,12 @@ export function loadMediumContent(_this){
 			const myModal = new bootstrap.Modal(document.getElementById('appForm'), {
 				keyboard: false
 			});
+			enabledButton(_this);
 			myModal.show();
 		},
 		error: function(jqXHR, testStatus, error) {
+			enabledButton(_this);
 			alert("Page " + href + " cannot open. Error:" + error);
-			$('#loader').hide();
 		}
 	});
 }

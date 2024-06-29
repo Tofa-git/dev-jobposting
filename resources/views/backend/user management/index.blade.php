@@ -22,10 +22,13 @@
 				</form>
 			</div>
 			<div class="p-2">
-				<a onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.create') }}" role="button" class="d-flex btn btn-warning bg-gradient rounded-0">
+				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.create') }}" class="d-flex align-items-center btn btn-warning bg-gradient rounded-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
+					<div class="spinner-border spinner-border-sm text-warning visually-hidden mx-1" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Buat Akun</span>
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>

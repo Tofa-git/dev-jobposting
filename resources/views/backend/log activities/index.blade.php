@@ -3,25 +3,23 @@
 </div>
 <div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-auto ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
 	<div class="flex-shrink-1">
-		<div class="d-flex border-bottom p-2 px-3">
-			<div class="d-flex flex-grow-1">
-				<form class="d-flex flex-row flex-fill">
+		<div class="d-flex border-bottom">
+			<div class="d-flex flex-grow-1 p-2">
+				<form class="d-flex flex-row flex-fill pe-2">
 					<input type="hidden" name="method" value="{{ @$_REQUEST['method'] }}" />
 					<input type="hidden" name="platform" value="{{ @$_REQUEST['platform'] }}" />
 					<input type="hidden" name="browser" value="{{ @$_REQUEST['browser'] }}" />
-					<div style="width: 150px">
-						<select class="form-select rounded-0 bg-white" name="total">
-							<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
-							<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
-							<option value="100" @if((int)$total === 100) selected @endif>100 Baris</option>
-						</select>
-					</div>
-					<div class="flex-grow-1 input-group m-0 ms-2 d-none d-sm-flex">
-						<input name="q" type="text" class="form-control bg-white rounded-0 p-0 px-3" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
+					<select name="total" class="form-select small bg-white rounded-0" style="width: 125px">
+						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
+						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
+						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
+					</select>
+					<div class="flex-grow-1 input-group ms-2 d-flex">
+						<input name="q" type="text" class="form-control bg-white rounded-0" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
 						<div class="input-group-append">
-							<div class="btn-group">
-								<button class="btn btn-outline-primary rounded-0 p-1 px-2" type="submit" title="Go Search"><i class="material-icons-outlined align-middle align-self-center">search</i></button>
-								<a class="btn btn-outline-secondary rounded-0 p-1 px-2" id="filter_button" role="button" title="Search options" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined align-middle align-self-center">filter_alt</i></a>
+							<div class="btn-group h-100">
+								<button class="btn btn-outline-primary rounded-0" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined" style="vertical-align: middle;">search</i></button>
+								<a class="btn btn-outline-secondary rounded-0 d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined" style="vertical-align: middle;">filter_alt</i></a>
 							</div>
 						</div>
 					</div>

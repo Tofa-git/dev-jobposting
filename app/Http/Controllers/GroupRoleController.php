@@ -116,6 +116,7 @@ class GroupRoleController extends Controller
             );
             if ($validator->fails()){
                 $_result = view('backend.group role.create')
+                    -> withErrors($validator)
                     -> render();
                 $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
                 return Redirect::to(route('group-roles.index'))
@@ -177,6 +178,7 @@ class GroupRoleController extends Controller
                 $_data = master_data_detail::where('id', $id)
                     -> first();
                 $_result = view('backend.group role.edit')
+                    -> withErrors($validator)
                     -> with('title', 'Edit '.$this->namaMenu)
                     -> with('data', $_data)
                     -> render();

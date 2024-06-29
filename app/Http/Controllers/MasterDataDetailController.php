@@ -148,6 +148,7 @@ class MasterDataDetailController extends Controller
                     $_refid = (int)$request->refid;
                 }
                 $_result = view('backend.master data detail.create')
+                    -> withErrors($validator)
                     -> with('referensi', $_referensi)
                     -> with('refid', $_refid)
                     -> render();
@@ -236,6 +237,7 @@ class MasterDataDetailController extends Controller
                 $_data = master_data_detail::where('id', $id)
                     -> first();
                 $_result = view('backend.master data detail.edit')
+                    -> withErrors($validator)
                     -> with('data', $_data)
                     -> with('referensi', $_referensi)
                     -> with('refid', $_refid)

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('extension', 8)->nullable();
             $table->bigInteger('size')->default(0.00);
             $table->string('description')->nullable();
+            $table->string('alt')->nullable();
             $table->bigInteger('owner')->default(0);
             $table->enum('status', ['0', '1', '2', '3'])->default('3');
             $table->foreignId('created_by')->constrained('users');

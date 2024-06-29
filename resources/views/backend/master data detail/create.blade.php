@@ -21,7 +21,7 @@
 					</div>
 					<div class="col-sm-9">
 						<div class="d-flex">
-							<input type="text" name="shortname" id="shortname" title="Shortname master data" placeholder="Shortname Master Data" class="w-100 form-control input-text @error('shortname') is-invalid @enderror" value="{{ old('shortname') }}" maxlength="32" />
+							<input type="text" name="shortname" id="shortname" title="Shortname master data" placeholder="Shortname Master Data" class="w-100 form-control input-text @error('shortname') is-invalid @enderror" maxlength="32" />
 							<div class="p-2 bg-secondary d-flex clearValue" style="cursor: pointer" title="Hapus">
 								<i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
 							</div>
@@ -34,7 +34,7 @@
 					</div>
 					<div class="col-sm-9">
 						<div class="d-flex">
-							<input type="text" name="description" id="description" title="Deskripsi master data" placeholder="Deskripsi Master Data" class="auto_focus w-100 form-control input-text @error('description') is-invalid @enderror" value="{{ old('description') }}" required autofocus maxlength="255" />
+							<input type="text" name="description" id="description" title="Deskripsi master data" placeholder="Deskripsi Master Data" class="auto_focus w-100 form-control input-text @error('description') is-invalid @enderror" required autofocus maxlength="255" />
 							<div class="p-2 bg-secondary d-flex clearValue" style="cursor: pointer" title="Hapus">
 								<i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
 							</div>

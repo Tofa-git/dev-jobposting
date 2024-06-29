@@ -18,17 +18,17 @@
 						<label class="small fw-bold" for="description">Description *)</label>
 					</div>
 					<div class="col-sm-9">
-						<textarea class="form-control bg-white rounded-0" rows="4" name="description" id="description"></textarea>
+						<textarea class="auto_focus form-control bg-white rounded-0 @error('description') is-invalid @enderror" rows="4" name="description" id="description"></textarea>
 					</div>
 				</div>
 			</div>
 			<hr />
 			<div class="d-flex px-3 justify-content-end">
-				<button type="submit" class="d-flex btn btn-primary bg-gradient rounded-0 me-2">
+				<button type="submit" class="d-flex btn btn-primary bg-gradient me-2">
 					<i class="material-icons-outlined align-middle align-self-center">save</i>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Simpan</span>
 				</button>
-				<a href="#" role="button" class="btn btn-danger bg-gradient rounded-0" data-bs-dismiss="modal" aria-label="Close">Close</a>
+				<a href="#" role="button" class="btn btn-danger bg-gradient" data-bs-dismiss="modal" aria-label="Close">Close</a>
 			</div>
 		</div>
 	</form>

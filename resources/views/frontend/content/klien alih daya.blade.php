@@ -1,7 +1,7 @@
 <div class="bg-white">
 <div class="container">
-<div class="mt-4 pb-4 pt-4">
-	<div class="row mt-3">
+<div class="pb-4 pt-4">
+	<div class="row mt-3 mb-3">
 		<div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
 			<h3 class="fw-bold text-center">Klien <span class="text-primary" style="font-family: 'Caveat', cursive; font-size: 22pt; font-weight: bold">Alih Daya</span></h3>
 			<h3 class="mt-2 text-feminim text-center fw-lighter">"Menangani SDM dengan Profesional, Akuntable dan Berteknologi"</h3>

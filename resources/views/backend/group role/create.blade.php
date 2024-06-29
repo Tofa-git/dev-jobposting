@@ -8,7 +8,7 @@
 				</div>
 				<div class="col-sm-9 mt-2">
                     <div class="d-flex">
-                        <input placeholder="Deskripsi Master Data" type="text" class="auto_focus rounded-0 form-control input-text @error('description') is-invalid @enderror" id="description" name="description" value="{{ old('description') }}" required />
+                        <input placeholder="Deskripsi Master Data" type="text" class="auto_focus rounded-0 form-control input-text @error('description') is-invalid @enderror" id="description" name="description" maxlength="255" required />
                         <div class="p-2 bg-secondary d-flex clearValue" style="cursor: pointer" title="Clear">
                             <i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
                         </div>
