@@ -9,7 +9,7 @@
 					</div>
 					<div class="col-sm-9">
 						<div class="d-flex">
-							<input type="file" class="form-control rounded-0 bg-white" name="file_name" id="file_name" accept="image/png, image/jpeg, application/pdf,  application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.openxmlformats-officedocument.presentationml.slideshow" />
+							<input type="file" class="form-control bg-white @error('file_name') is-invalid @enderror" name="file_name" id="file_name" accept="image/png, image/jpeg, application/pdf,  application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.openxmlformats-officedocument.presentationml.slideshow" />
 						</div>
 					</div>
 				</div>
@@ -18,7 +18,7 @@
 						<label class="small fw-bold" for="description">Description *)</label>
 					</div>
 					<div class="col-sm-9">
-						<textarea class="auto_focus form-control bg-white rounded-0 @error('description') is-invalid @enderror" rows="4" name="description" id="description"></textarea>
+						<textarea class="auto_focus form-control bg-white @error('description') is-invalid @enderror" rows="4" name="description" id="description"></textarea>
 					</div>
 				</div>
 			</div>

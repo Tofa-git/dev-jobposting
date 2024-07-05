@@ -16,11 +16,11 @@
                 @csrf
                 <div class="d-flex mt-4">
                     <div class="position-absolute p-2">
-                        <i class="material-icons text-secondary">people</i>
+                        <i class="material-icons-outlined text-secondary">people</i>
                     </div>
                     <input placeholder="Email atau NIP" type="text" class="rounded-0 ps-5 form-control input-text @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus />
-                    <div class="p-2 bg-secondary d-flex clearValue" style="cursor: pointer" title="Clear username">
-                        <i class="material-icons align-self-center text-white fs-5">clear</i>
+                    <div onclick="globalFunction.clearValue(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Clear username">
+                        <i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
                     </div>
                 </div>
                 @error('email')
@@ -30,11 +30,11 @@
                 @enderror
                 <div class="d-flex mt-3">
                     <div class="position-absolute p-2">
-                        <i class="material-icons text-secondary">lock</i>
+                        <i class="material-icons-outlined text-secondary">lock</i>
                     </div>
                     <input type="password" id="password" class="rounded-0 ps-5 form-control input-text @error('password') is-invalid @enderror" name="password" placeholder="Password" value="{{ old('password') }}" required />
-                    <div class="p-2 bg-secondary d-flex hideShowPassword" style="cursor: pointer" title="Show or hide password">
-                        <i class="material-icons align-self-center text-info fs-5">visibility_off</i>
+                    <div onclick="globalFunction.togglePassword(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Show or hide password">
+                        <i class="material-icons-outlined align-self-center text-info fs-5">visibility_off</i>
                     </div>
                 </div>
                 @error('password')
@@ -53,7 +53,7 @@
                 <div>
                     <button type="submit" class="btn btn-primary bg-gradient d-flex justify-content-center w-100 mt-4">
                         <span class="px-2">Sign In</span>
-                        <i class="material-icons align-self-center">play_circle_outline</i>
+                        <i class="material-icons-outlined align-self-center">play_circle_outline</i>
                     </button>
                 </div>
             </form>

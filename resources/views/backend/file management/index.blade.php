@@ -7,30 +7,26 @@
 			<div class="d-flex flex-grow-1 p-2">
 				<form class="d-flex flex-grow-1">
 					<input type="hidden" name="refid" value="{{ @$_REQUEST['refid'] }}" />
-					<select name="baris" class="form-select small bg-white rounded-0" style="width: 125px">
+					<select name="total" class="form-select small bg-white border-grey" style="width: 125px">
 						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
 					</select>
 					<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
-						<input name="q" type="text" class="form-control bg-white rounded-0" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
-						<div class="input-group-append">
-							<div class="btn-group h-100">
-								<button class="btn btn-outline-primary rounded-0" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined" style="vertical-align: middle;">search</i></button>
-								<a class="btn btn-outline-secondary rounded-0 d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined" style="vertical-align: middle;">filter_alt</i></a>
-							</div>
-						</div>
+						<input name="q" type="text" class="form-control bg-white border-grey" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
+						<button class="btn btn-outline-primary border-grey" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">search</i></button>
+						<a class="btn btn-outline-secondary border-grey d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">filter_alt</i></a>
 					</div>
 				</form>
 			</div>
-			<div class="p-2">
-				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('file-management.create', ['refid'=>@$_REQUEST['refid']]) }}" class="d-flex align-items-center btn btn-warning bg-gradient">
+			<div class="p-2 d-flex">
+				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('file-management.create', ['refid'=>@$_REQUEST['refid']]) }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm text-warning visually-hidden mx-1" role="status">
+					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -135,7 +131,7 @@
 			<div class="row">
 				<div class="col-sm-4 small">Tampilkan</div>
 				<div class="col-sm-8">
-					<select class="form-select rounded-0 bg-white" name="total">
+					<select class="form-select bg-white" name="total">
 						<option value="25" @if((int)$total === 25) selected @endif>25</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50</option>
 						<option value="100" @if((int)$total === 100) selected @endif>100</option>
@@ -145,7 +141,7 @@
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Extension</div>
 				<div class="col-sm-8">
-					<select class="form-select rounded-0 bg-white" name="extension">
+					<select class="form-select bg-white" name="extension">
 						<option value="All Files" selected>All Files</option>
 						@foreach($extension as $_extension)
 							<option value="{{ $_extension->extension }}" @if((int)@$_REQUEST['ext']===(int)$_extension->extension) selected @endif>{{ $_extension->extension }} Files</option>
@@ -155,10 +151,10 @@
 			</div>
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Deskripsi</div>
-				<div class="col-sm-8"><input type="text" class="form-control rounded-0 bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
+				<div class="col-sm-8"><input type="text" class="form-control bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
 			</div>
 			<hr />
-			<button class="btn btn-outline-primary rounded-0">Lakukan Pencarian</button>
+			<button class="btn btn-outline-primary">Lakukan Pencarian</button>
 		</form>
 	</div>
 </div>
@@ -169,11 +165,6 @@
 ])
 
 <script type="module">
-	var myModalEl = document.getElementById('appForm');
-	myModalEl.addEventListener('hidden.bs.modal', function (event) {
-		$('#appForm .modal-body').html('');
-	});
-
 	$(document).on('click', '#btnCopyUrlImage', function(e){
 		e.preventDefault();
 		const _url = window.location.origin + '/file-manager/link-url?ref='+$(this).attr('data-copy');
@@ -188,13 +179,7 @@
 			}
 		});
 	});
-
-	const myModalEl1 = document.getElementById('appForm');
-	myModalEl1.addEventListener('shown.bs.modal', event => {
-		$('.auto_focus').trigger('focus');
-	});
 </script>
-
 
 @if(session()->has('modal'))
 

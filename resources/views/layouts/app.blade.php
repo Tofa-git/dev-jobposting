@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/src/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div class="d-flex vh-100">
         @include('backend.partials.menu')
-        <div class="d-flex flex-fill w-100 flex-column" style="transition: width 2s">
+        <div class="d-flex flex-fill w-100 flex-column overflow-hidden" style="transition: width 2s">
             @include('backend.partials.header')
             @include($pages)
             @include('backend.partials.footer')

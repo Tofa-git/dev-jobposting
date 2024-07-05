@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     
     <!-- Scripts -->
-    @vite(['resources/sass/login.scss', 'resources/js/login.js', 'resources/js/login/app.js'])
+    @vite(['resources/sass/login.scss', 'resources/js/login.js'])
 </head>
 <body>
     <div class="vh-100">

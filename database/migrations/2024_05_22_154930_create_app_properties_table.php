@@ -37,6 +37,10 @@ return new class extends Migration
             $table->string('mail_username', 64)->nullable();
             $table->string('mail_password', 64)->nullable();
             $table->string('mail_encryption', 8)->nullable();
+            $table->string('wa_number', 32)->nullable();
+            $table->string('wa_api_key', 64)->nullable();
+            $table->text('api_host')->nullable();
+            $table->text('api_secret')->nullable();
             $table->boolean('frontend_website')->default(0);
             $table->enum('status', ['0', '1', '2', '3'])->default('3');
             $table->foreignId('created_by')->constrained('users');

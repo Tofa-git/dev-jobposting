@@ -87,11 +87,11 @@
 			</div>
 			<hr />
 			<div class="d-flex px-3 pb-3 justify-content-end">
-				<button type="submit" class="d-flex btn btn-primary rounded-0 bg-gradient me-2">
+				<button type="submit" class="d-flex btn btn-primary bg-gradient me-2">
 					<i class="material-icons-outlined align-middle align-self-center">save</i>
 					<span class="px-2 d-flex text-nowrap align-self-center">Simpan</span>
 				</button>
-				<a data-bs-dismiss="modal" role="button" class="btn btn-danger rounded-0 bg-gradient">Close</a>
+				<a data-bs-dismiss="modal" role="button" class="btn btn-danger bg-gradient">Close</a>
 			</div>
 		</div>
 	</form>

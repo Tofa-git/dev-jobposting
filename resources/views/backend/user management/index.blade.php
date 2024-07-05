@@ -2,32 +2,28 @@
 	<span class="fs-4 fw-lighter">{{ $title }}</span>
 </div>
 <div class="d-flex flex-fill flex-column ms-2 mt-1 shadow-sm bg-white" style="border-bottom-left-radius: 10px; border-top-left-radius: 10px; overflow-y: hidden; overflow-x: auto; border: 1px solid #dddddd">
-	<div class="flex-shrink-1">
+	<div class="flex-shrink-1 bg-light">
 		<div class="d-flex border-bottom">
 			<div class="d-flex flex-grow-1 p-2">
 				<form class="d-flex flex-grow-1">
-				<select name="total" class="form-select small bg-white rounded-0" style="width: 125px">
-					<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
-					<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
-					<option value="100" @if((int)$total === 100) selected @endif>100 Baris</option>
-				</select>
-				<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
-					<input name="q" type="text" class="form-control bg-white rounded-0" value="{{ @$_REQUEST['q'] }}" placeholder="Nama Halaman">
-					<div class="input-group-append">
-						<div class="btn-group h-100">
-							<button class="btn btn-outline-primary rounded-0" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined" style="vertical-align: middle;">search</i></button>
-						</div>
+					<select name="total" class="form-select small bg-white border-grey" style="width: 125px">
+						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
+						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
+						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
+					</select>
+					<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
+						<input name="q" type="text" class="form-control bg-white border-grey" value="{{ @$_REQUEST['q'] }}" placeholder="Username atau Nama Lengkap">
+						<button class="btn btn-outline-primary border-grey bg-gradient d-flex align-items-center" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined fs-5 px-1">search</i></button>
 					</div>
-				</div>
 				</form>
 			</div>
-			<div class="p-2">
-				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.create') }}" class="d-flex align-items-center btn btn-warning bg-gradient rounded-0">
+			<div class="p-2 d-flex">
+				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.create') }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm text-warning visually-hidden mx-1" role="status">
+					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
-					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Buat Akun</span>
+					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
 				</button>
 			</div>
 		</div>
@@ -85,9 +81,12 @@
 							</td>
 							<td align="center text-nowrap" style="white-space: nowrap;">
 								@if(\Auth::user()->hasPermission('User Management', 'update'))
-									<a onclick="event.preventDefault(); globalFunction.loadLargeContent(this)" data-attr="{{ route('user-role.edit', $_data->id) }}" class="btn btn-sm btn-outline-primary p-0 px-2" role="button" title="Edit role"><i class="fs-6 p-1 d-flex material-icons-outlined">menu</i></a>
-								@endif
-								@if(\Auth::user()->hasPermission('User Management', 'update'))
+									<button onclick="event.preventDefault(); globalFunction.loadLargeContent(this)" data-attr="{{ route('user-role.edit', $_data->id) }}" class="btn btn-sm btn-outline-primary ms-1 p-0 px-2 d-inline-flex align-items-center" title="Edit">
+										<i class="material-icons-outlined p-1 d-flex fs-6">menu</i>
+										<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+											<span class="visually-hidden">Loading...</span>
+										</div>
+									</button>
 									<form method="post" class="d-inline-block" action="{{route('user-management.reset-password', $_data->id)}}" onsubmit="return confirm('Anda yakin ingin mereset password user?')">
 										@csrf
 										@method('put')
@@ -95,9 +94,12 @@
 											<i class="fs-6 p-1 d-flex material-icons-outlined">lock_open</i>
 										</button>
 									</form>
-								@endif
-								@if(\Auth::user()->hasPermission('User Management', 'update'))
-									<a onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.edit', $_data) }}" class="btn btn-outline-primary btn-sm p-0 px-2 ms-1" role="button" title="Edit"><i class="fs-6 d-flex p-1 material-icons-outlined">edit</i></a>
+									<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('user-management.edit', $_data) }}" class="btn btn-sm btn-outline-primary ms-1 p-0 px-2 d-inline-flex align-items-center" title="Edit">
+										<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
+										<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+											<span class="visually-hidden">Loading...</span>
+										</div>
+									</button>
 								@endif
 								@if(\Auth::user()->hasPermission('User Management', 'delete'))
 									<form method="post" class="d-inline-block" action="{{route('user-management.destroy', $_data->id)}}" onsubmit="return confirm('Anda yakin ingin menghapus user account?')">
@@ -166,18 +168,6 @@
 	'modal_type'	=> 'modal-lg',
 	'title'			=> $title,
 ])
-
-<script type="module">
-	var myModalEl = document.getElementById('appForm');
-	myModalEl.addEventListener('hidden.bs.modal', function (event) {
-		$('#appForm .modal-body').html('');
-	});
-
-	const myModalEl1 = document.getElementById('appForm');
-	myModalEl1.addEventListener('shown.bs.modal', event => {
-		$('.auto_focus').trigger('focus');
-	});
-</script>
 
 @if(session()->has('modal'))
 

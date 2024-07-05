@@ -2,31 +2,27 @@
 	<span class="fs-4 fw-lighter">{{ $title }}</span>
 </div>
 <div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-auto ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
-	<div class="flex-shrink-1">
+	<div class="flex-shrink-1 bg-light">
 		<div class="d-flex border-bottom">
 			<div class="d-flex flex-grow-1 p-2">
 				<form class="d-flex flex-grow-1">
 					<input type="hidden" name="refid" value="{{ @$_REQUEST['refid'] }}" />
-					<select name="total" class="form-select small bg-white rounded-0" style="width: 125px">
+					<select name="total" class="form-select small bg-white border-grey" style="width: 125px">
 						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
 					</select>
 					<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
-						<input name="q" type="text" class="form-control bg-white rounded-0" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
-						<div class="input-group-append">
-							<div class="btn-group h-100">
-								<button class="btn btn-outline-primary rounded-0" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined" style="vertical-align: middle;">search</i></button>
-								<a class="btn btn-outline-secondary rounded-0 d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined" style="vertical-align: middle;">filter_alt</i></a>
-							</div>
-						</div>
+						<input name="q" type="text" class="form-control bg-white border-grey" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
+						<button class="btn btn-outline-primary border-grey" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">search</i></button>
+						<a class="btn btn-outline-secondary border-grey d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">filter_alt</i></a>
 					</div>
 				</form>
 			</div>
-			<div class="p-2">
-				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('master-data-detail.create', ['refid'=>@$_REQUEST['refid']]) }}" class="d-flex align-items-center btn btn-warning bg-gradient rounded-0">
+			<div class="p-2 d-flex">
+				<button onclick="event.preventDefault(); globalFunction.loadMediumContent(this)" data-attr="{{ route('master-data-detail.create', ['refid'=>@$_REQUEST['refid']]) }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm text-warning visually-hidden mx-1" role="status">
+					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
@@ -76,7 +72,12 @@
 							<td class="text-nowrap">
 								@if(is_null($_data->deleted_at))
 									@if(\Auth::user()->hasPermission('Master Data', 'update'))
-										<a onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('master-data-detail.edit', $_data) }}" class="btn btn-outline-primary btn-sm p-0 px-2" title="Edit" role="button"><i class="material-icons-outlined p-1 d-flex fs-6">create</i></a>
+										<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('master-data-detail.edit', $_data) }}" class="btn btn-sm btn-outline-primary p-0 px-2 d-inline-flex align-items-center" title="Edit">
+											<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
+											<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+												<span class="visually-hidden">Loading...</span>
+											</div>
+										</button>
 									@endif
 									@if(\Auth::user()->hasPermission('Master Data', 'delete'))
 										<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('master-data-detail.destroy', $_data) }}" class="d-inline">
@@ -116,7 +117,7 @@
 			<div class="row">
 				<div class="col-sm-4 small">Tampilkan</div>
 				<div class="col-sm-8">
-					<select class="form-select rounded-0 bg-white" name="total">
+					<select class="form-select bg-white" name="total">
 						<option value="25" @if((int)$total === 25) selected @endif>25</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50</option>
 						<option value="100" @if((int)$total === 100) selected @endif>100</option>
@@ -126,7 +127,7 @@
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Referensi</div>
 				<div class="col-sm-8">
-					<select class="form-select rounded-0 bg-white" name="refid">
+					<select class="form-select bg-white" name="refid">
 						@foreach($referensi as $_referensi)
 							<option value="{{ $_referensi->id }}" @if((int)@$_REQUEST['refid']===(int)$_referensi->id) selected @endif>{{ $_referensi->description }}</option>
 						@endforeach
@@ -135,10 +136,10 @@
 			</div>
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Deskripsi</div>
-				<div class="col-sm-8"><input type="text" class="form-control rounded-0 bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
+				<div class="col-sm-8"><input type="text" class="form-control bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
 			</div>
 			<hr />
-			<button class="btn btn-outline-primary rounded-0">Lakukan Pencarian</button>
+			<button class="btn btn-primary bg-gradient">Lakukan Pencarian</button>
 		</form>
 	</div>
 </div>
@@ -147,19 +148,6 @@
 	'modal_type'	=> 'modal-lg',
 	'title'			=> $title
 ])
-
-<script type="module">
-	var myModalEl = document.getElementById('appForm');
-	myModalEl.addEventListener('hidden.bs.modal', function (event) {
-		$('#appForm .modal-body').html('');
-	});
-
-	const myModalEl1 = document.getElementById('appForm');
-	myModalEl1.addEventListener('shown.bs.modal', event => {
-		$('.auto_focus').trigger('focus');
-	});
-</script>
-
 
 @if(session()->has('modal'))
 

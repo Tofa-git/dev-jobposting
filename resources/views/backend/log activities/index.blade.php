@@ -5,23 +5,17 @@
 	<div class="flex-shrink-1">
 		<div class="d-flex border-bottom">
 			<div class="d-flex flex-grow-1 p-2">
-				<form class="d-flex flex-row flex-fill pe-2">
-					<input type="hidden" name="method" value="{{ @$_REQUEST['method'] }}" />
-					<input type="hidden" name="platform" value="{{ @$_REQUEST['platform'] }}" />
-					<input type="hidden" name="browser" value="{{ @$_REQUEST['browser'] }}" />
-					<select name="total" class="form-select small bg-white rounded-0" style="width: 125px">
+				<form class="d-flex flex-grow-1">
+					<input type="hidden" name="refid" value="{{ @$_REQUEST['refid'] }}" />
+					<select name="total" class="form-select small bg-white border-grey" style="width: 125px">
 						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
 					</select>
-					<div class="flex-grow-1 input-group ms-2 d-flex">
-						<input name="q" type="text" class="form-control bg-white rounded-0" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
-						<div class="input-group-append">
-							<div class="btn-group h-100">
-								<button class="btn btn-outline-primary rounded-0" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined" style="vertical-align: middle;">search</i></button>
-								<a class="btn btn-outline-secondary rounded-0 d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined" style="vertical-align: middle;">filter_alt</i></a>
-							</div>
-						</div>
+					<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
+						<input name="q" type="text" class="form-control bg-white border-grey" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">
+						<button class="btn btn-outline-primary border-grey" type="submit" title="Go Search" style="padding: 2px 5px"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">search</i></button>
+						<a class="btn btn-outline-secondary border-grey d-flex align-items-center" id="filter_button" role="button" title="Search options" style="padding: 2px 5px" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><i class="material-icons-outlined fs-5 px-1" style="vertical-align: middle;">filter_alt</i></a>
 					</div>
 				</form>
 			</div>
@@ -99,7 +93,7 @@
 			<div class="row">
 				<div class="col-sm-4 small">Tampilkan</div>
 				<div class="col-sm-8">
-					<select class="form-select rounded-0 bg-white" name="total" id="total">
+					<select class="form-select bg-white" name="total" id="total">
 						<option value="25" @if((int)$total === 25) selected @endif>25</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50</option>
 						<option value="100" @if((int)$total === 100) selected @endif>100</option>
@@ -109,7 +103,7 @@
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Platform</div>
 				<div class="col-sm-8">
-					<select class="rounded-0 bg-white form-select" name="platform" id="platform">
+					<select class="bg-white form-select" name="platform" id="platform">
 						<option selected disabled>Seluruh Platform</option>
 						@foreach($platform as $_platform)
 							<option value="{{ $_platform->platform }}" @if(@$_REQUEST['platform'] === $_platform->platform) selected @endif>{{ strtoupper($_platform->platform) }}</option>
@@ -120,7 +114,7 @@
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Browser</div>
 				<div class="col-sm-8">
-					<select class="rounded-0 bg-white form-select" name="browser" id="browser">
+					<select class="bg-white form-select" name="browser" id="browser">
 						<option selected disabled>Seluruh Browser</option>
 						@foreach($browser as $_browser)
 							<option value="{{ $_browser->browser }}" @if(@$_REQUEST['browser'] === $_browser->browser) selected @endif>{{ strtoupper($_browser->browser) }}</option>
@@ -131,7 +125,7 @@
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Method</div>
 				<div class="col-sm-8">
-					<select class="rounded-0 bg-white form-select" name="method" id="method">
+					<select class="bg-white form-select" name="method" id="method">
 						<option selected disabled>Seluruh Method</option>
 						@foreach($method as $_method)
 							<option value="{{ $_method->method }}" @if(@$_REQUEST['method'] === $_method->method) selected @endif>{{ strtoupper($_method->method) }}</option>
@@ -141,10 +135,10 @@
 			</div>
 			<div class="row mt-1">
 				<div class="col-sm-4 small">Deskripsi</div>
-				<div class="col-sm-8"><input type="text" class="form-control rounded-0 bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
+				<div class="col-sm-8"><input type="text" class="form-control bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
 			</div>
 			<hr />
-			<button type="submit" class="btn btn-outline-primary rounded-0">Lakukan Pencarian</button>
+			<button type="submit" class="btn btn-primary bg-gradient">Lakukan Pencarian</button>
 		</form>
 	</div>
 </div>

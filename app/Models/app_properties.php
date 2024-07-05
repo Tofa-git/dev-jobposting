@@ -29,4 +29,18 @@ class app_properties extends Model
 		}
 	}
 
+	public static function apiHost():string {
+		$_result = Self::select('api_host')
+			-> where('status', '0')
+			-> first();
+		return @$_result->api_host;
+	}
+
+	public static function apiSecret():string {
+		$_result = Self::select('api_secret')
+			-> where('status', '0')
+			-> first();
+		return @$_result->api_secret;
+	}
+
 }

@@ -32,6 +32,8 @@
 .text-gray25{color: #dddddd;}
 .text-lightBlue{color: lightBlue;}
 
+.border-grey{border: 1px solid #cccccc!important;}
+
 .cursor-default{cursor: default;}
 
 .rounded-main-window{
@@ -40,6 +42,11 @@
     border-top: 1px solid #dddddd;
     border-left: 1px solid #dddddd;
     border-bottom: 1px solid #dddddd
+}
+
+.m-spinner-small{
+    width: 14.25px!important;
+    height: 14.25px!important;
 }
 
 .avatar{
@@ -175,14 +182,11 @@
 
 /*Select2 */
 .select2.select2-container {
-    width: 100% !important;
+    height: 100% !important;
 }
 
 .select2.select2-container .select2-selection {
     border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 0px;
     height: 34px;
     outline: none !important;
     transition: all .15s ease-in-out;
@@ -197,21 +201,12 @@
 .select2.select2-container .select2-selection .select2-selection__arrow {
     background: #f8f8f8;
     border-left: 1px solid #ccc;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
     height: 32px;
     width: 33px;
 }
 
 .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
     background: #f8f8f8;
-}
-
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
-    -webkit-border-radius: 0 3px 0 0;
-    -moz-border-radius: 0 3px 0 0;
-    border-radius: 0 3px 0 0;
 }
 
 .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
@@ -237,9 +232,6 @@
 .select2.select2-container .select2-selection--multiple .select2-selection__choice {
     background-color: #f8f8f8;
     border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
     margin: 4px 4px 0 0;
     padding: 0 6px 0 22px;
     height: 24px;
@@ -330,9 +322,4 @@
     font-weight: bold;
     height: auto;
     display: inline;
-}
-
-.input-text{
-    border-radius: 0px!important;
-    background-color: white!important;
 }

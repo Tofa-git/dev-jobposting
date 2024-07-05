@@ -10,6 +10,7 @@ use Storage;
 use File;
 use Intervention\Image\Laravel\Facades\Image;
 use App\Models\data_file;
+use App\Models\app_properties;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -68,10 +69,10 @@ class general
         return $_kalimat;
     }
 
-	public static function getToken($req){
+    public static function getToken(){
         $_user = \Auth::user();
         if(is_null($_user->access_token)){
-            $url = env('API_HOST')."/auth/create-token";
+            $url = app_properties::apiHost()."/auth/create-token";
             $headers = [
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
@@ -82,7 +83,7 @@ class general
             $param = [
                 'user' => $_user->email,
                 'role' => $_user->role,
-                'token' => env('API_KEY'),
+                'token' => app_properties::apiSecret(),
             ];
             $_result = Http::withHeaders($headers)
                 -> withOptions($options)
@@ -93,7 +94,7 @@ class general
         }else{
             return null;
         }
-	}
+    }
 
     public static function checkFolder($_check_ext){
         if(($_check_ext==='JPG') || ($_check_ext==='PNG') || ($_check_ext==='BMP') || ($_check_ext==='JPEG') || ($_check_ext==='GIF')){
