@@ -28,6 +28,12 @@ class MasterDataSeeder extends Seeder
                 'created_at'    => now(),
             ],[
                 'type'          => '0',
+                'description'   => 'Jenis Layout',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ],[
+                'type'          => '0',
                 'description'   => 'Pendidikan',
                 'status'        => '0',
                 'created_by'    => 1,

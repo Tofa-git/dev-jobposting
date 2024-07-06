@@ -10,6 +10,7 @@ use App\Models\image_slider;
 use App\Models\posting_berita;
 use App\Models\halaman_website;
 use App\Models\informasi_penting;
+use App\Models\data_file;
 use Redirect;
 use App\Traits\apiResponser;
 
@@ -309,6 +310,11 @@ class frontendController extends Controller
         $_hasil['content'] = $_result;
         $_hasil['title'] = @$_data->title;
         return $this->success($_hasil);
+    }
+
+    public function fileLinkUrl(Request $request)
+    {
+        return data_file::getPublicImage(@$request->ref);
     }
     
 }

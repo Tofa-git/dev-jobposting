@@ -4,6 +4,12 @@ export function checkSubmission(form){
 	button.disabled = true;
 }
 
+export function prosesButton(obj){
+	let button = obj;
+	button.getElementsByTagName('span')[0].innerText = 'Process...';
+	button.disabled = true;
+}
+
 export function disabledButton(obj){
 	let _check = obj.tagName;
 	if(_check === 'BUTTON'){
@@ -205,10 +211,17 @@ export function clearValue(event){
 var myModalEl = document.getElementById('appForm');
 if (typeof(myModalEl) != 'undefined' && myModalEl != null){
 	myModalEl.addEventListener('hidden.bs.modal', event => {
+		if (document.contains(document.getElementById("bodyEditor"))){
+			tinymce.remove('#bodyEditor');
+		}
 		$('#appForm .modal-body').html('');
 	});
 	myModalEl.addEventListener('shown.bs.modal', event => {
 		$('.auto_focus').trigger('focus');
 		$('.auto_focus').select();
 	});
+}
+
+export function updateJudul(_this, _url){
+	$(_url).val('/'+_this.value.replace(/\s+/g, '-').toLowerCase());
 }

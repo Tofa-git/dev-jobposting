@@ -19,7 +19,7 @@ class CreateHalamanWebsitesTable extends Migration
             $table->string('title', 255);
             $table->string('url', 255);
             $table->string('gambar_utama', 128)->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->bigInteger('published_by')->default(0);
             $table->dateTime('published_at')->nullable();
             $table->enum('status', ['0', '1', '2', '3'])->default('3');

@@ -1,7 +1,7 @@
 @php
 	$_photo = null;
 @endphp
-<div class="flex-shrink-1 bg-midnightBlue">
+<div class="flex-shrink-1 bg-midnightBlue" style="box-shadow: 0px 3px 5px #aaaaaa; z-index: 5">
 	<nav class="navbar navbar-expand-md navbar-light m-0">
 		<div class="d-flex flex-grow-1 m-0">
 			<a class="d-lg-none d-inline-block navbar-brand m-0 px-2 mx-1 bg-teal-hover d-flex text-light" href="#" data-bs-toggle="offcanvas" data-bs-target="#mobileAppMenu" aria-controls="mobileAppMenu">
