@@ -53,7 +53,6 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-            'strict' => true,
             'modes' => [
                 'STRICT_TRANS_TABLES',
                 'NO_ZERO_IN_DATE',
