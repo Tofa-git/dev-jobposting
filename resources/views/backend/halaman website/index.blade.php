@@ -35,10 +35,9 @@
 			<thead>
 				<tr class="text-nowrap">
 					<th width="30px">No</th>
-					<th width="150px">Referensi</th>
-					<th width="30px">Sequence</th>
-					<th width="200px">Shortname</th>
-					<th>Descriptions</th>
+					<th width="100px">Layout</th>
+					<th>Informasi Halaman</th>
+					<th width="50px">Publikasi</th>
 					<th width="50px">Status</th>
 					<th width="50px">Aksi</th>
 				</tr>
@@ -47,18 +46,34 @@
 				@if($data->isEmpty())
 					<tr>
 						<td align="center">*</td>
-						<td colspan="6">Tidak ada data</td>
+						<td colspan="4">Tidak ada data</td>
 					</tr>
 				@else
 					@php $_i=$data->firstItem(); @endphp
 					@foreach($data as $_data)
 						<tr @if($_i % 2===0) class="bg-light" @else class="bg-white" @endif valign="top">
 							<td align="center">{{ $_i }}</td>
+							<td class="text-nowrap">{{ $_data->layout->description }}</td>
 							<td>
-								{!! $_data->content !!}
+								<div class="d-flex">
+									<div style="width: 150px; height: 100px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getThumbnailImage($_data->gambar_utama) }});" class="border"></div> 
+									<div class="px-2">
+										<div class="fw-bold">{{ $_data->title }}</div> 
+										<div>{!! $_data->content !!}</div>
+									</div>
+								</div>
 							</td>
 							<td>
-								@if(\Auth::user()->hasPermission('Master Data', 'suspend'))
+								@if(\Auth::user()->hasPermission('Halaman Website', 'suspend'))
+									@if((int)$_data->published_by > 0)
+										<a href="{{ route('halaman-website.status', $_data->id) }}" role="button" class="btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Click for suspend">PUBLISH</a>
+									@else
+										<a href="{{ route('halaman-website.status', $_data->id) }}" role="button" class="btn btn-sm btn-secondary m-0 p-0 ps-2 pe-2" title="Click for activate">DRAFT</a>
+									@endif
+								@endif
+							</td>
+							<td>
+								@if(\Auth::user()->hasPermission('Halaman Website', 'suspend'))
 									@if($_data->status==='0')
 										<a href="{{ route('halaman-website.status', $_data->id) }}" role="button" class="btn btn-sm btn-info bg-gradient m-0 p-0 ps-2 pe-2" title="Click for suspend">ACTIVE</a>
 									@elseif($_data->status==='1')
@@ -70,10 +85,10 @@
 							</td>
 							<td class="text-nowrap">
 								@if(is_null($_data->deleted_at))
-									@if(\Auth::user()->hasPermission('Master Data', 'update'))
-										<a onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('halaman-website.edit', $_data) }}" class="btn btn-outline-primary btn-sm p-0 px-2" title="Edit" role="button"><i class="material-icons-outlined p-1 d-flex fs-6">create</i></a>
+									@if(\Auth::user()->hasPermission('Halaman Website', 'update'))
+										<a href="{{ route('halaman-website.edit', $_data) }}" class="btn btn-outline-primary btn-sm p-0 px-2" title="Edit" role="button"><i class="material-icons-outlined p-1 d-flex fs-6">create</i></a>
 									@endif
-									@if(\Auth::user()->hasPermission('Master Data', 'delete'))
+									@if(\Auth::user()->hasPermission('Halaman Website', 'delete'))
 										<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('halaman-website.destroy', $_data) }}" class="d-inline">
 											@csrf()
 											@method('delete')

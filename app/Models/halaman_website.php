@@ -15,6 +15,10 @@ class halaman_website extends Model
 	protected $guarded = [];
 	protected $dates = ['deleted_at'];
 
+    public function layout(){
+        return $this->belongsTo(master_data_detail::class,'id_layout','id')->select('id', 'description');
+    }
+
     public static function getFieldValue($id, $field){
         $_result = Self::find($id, [$field]);
         return @$_result->{$field};

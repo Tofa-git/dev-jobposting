@@ -22,6 +22,8 @@ class CreatePostingBeritasTable extends Migration
             $table->text('foto_utama')->nullable();
             $table->string('keterangan_foto', 128)->nullable();
             $table->text('content')->nullable();
+            $table->string('meta_title', 128)->nullable();
+            $table->string('meta_description', 255)->nullable();
             $table->enum('sebagai_slider', ['0', '1'])->default('0');
             $table->bigInteger('published_by')->default(0);
             $table->dateTime('published_at')->nullable();

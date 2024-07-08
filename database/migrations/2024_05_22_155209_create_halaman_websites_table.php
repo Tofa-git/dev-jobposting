@@ -19,6 +19,8 @@ class CreateHalamanWebsitesTable extends Migration
             $table->string('title', 255);
             $table->string('url', 255);
             $table->string('gambar_utama', 128)->nullable();
+            $table->string('meta_title', 128)->nullable();
+            $table->string('meta_description', 255)->nullable();
             $table->longText('content')->nullable();
             $table->bigInteger('published_by')->default(0);
             $table->dateTime('published_at')->nullable();
