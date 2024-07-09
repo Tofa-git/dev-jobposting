@@ -36,30 +36,30 @@
 							<form>
 								<div class="row">
 									<div class="col-md-4">
-										<label>Lokasi Penempatan</label>
+										<label for="lokasi">Lokasi Penempatan</label>
 									</div>
 									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" id="lokasi">
+										<select class="form-select rounded-0 bg-white" name="lokasi" id="lokasi">
 											<option value="0" selected>Pilih Lokasi Penempatan</option>
 										</select>
 									</div>
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-4">
-										<label>Bidang Pekerjaan</label>
+										<label for="bidang">Bidang Pekerjaan</label>
 									</div>
 									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" id="lokasi">
+										<select class="form-select rounded-0 bg-white" name="bidang" id="bidang">
 											<option value="0" selected>Pilih Bidang Pekerjaan</option>
 										</select>
 									</div>
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-4">
-										<label class="text-secondary">Level Jabatan</label>
+										<label for="level">Level Jabatan</label>
 									</div>
 									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" id="lokasi">
+										<select class="form-select rounded-0 bg-white" name="level" id="level">
 											<option value="0" selected>Pilih Level Jabatan</option>
 										</select>
 									</div>

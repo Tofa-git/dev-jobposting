@@ -55,38 +55,21 @@ class frontendController extends Controller
             $_data = halaman_website::with('layout')
                 -> whereRaw('url="/'.$halaman.'" And published_by > 0')
                 -> first();
-            $_layout = strtolower(@$_data->layout->description);
-            $_berita = posting_berita::with('kategoriBerita')
-                -> whereRaw('status="0" And published_by > 0 And id_kategori=7')
-                -> orderByRaw('published_at Desc')
-                -> limit(4)
-                -> get();
-            $_info = app_properties::first();
-            if($halaman === 'database-capaian-kp'){
-                $_tema_pencapaian = master_data_detail::where('status', '0')
-                    -> where('refid', 7)
-                    -> get();
-                $_result = view('capaian')
-                    -> with('pages', 'frontend.halaman capaian')
-                    -> with('title', $_data->title)
-                    -> with('content', $_data)
-                    -> with('tema_pencapaian', $_tema_pencapaian)
-                    -> with('berita', $_berita)
-                    -> with('info', $_info)
-                    -> with('active', $_active)
-                    -> render();
-            }else{
+            if($_data){
+                $_layout = strtolower(@$_data->layout->description);
+                $_info = app_properties::first();
                 $_result = view('welcome')
-                    -> with('pages', 'frontend.'.$_layout)
+                    -> with('pages', 'frontend.halaman')
                     -> with('title', $_data->title)
                     -> with('content', $_data)
-                    -> with('berita', $_berita)
-                    -> with('info', $_info)
                     -> with('active', $_active)
+                    -> with('info', $_info)
                     -> render();
+                $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
+                return $_result;
+            }else{
+                abort('404');
             }
-            $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
-            return $_result;
         }else{
             return Redirect::to(route('dashboard.index'));
         }

@@ -128,7 +128,7 @@ class MasterDataDetailController extends Controller
             $validator = Validator::make($request->all(),
                 [
                     'refid'         => 'required|numeric|gt:0',
-                    'shortname'     => 'nullable|max:16|regex:/^[a-zA-Z0-9\s\-\,\(\)]+$/',
+                    'shortname'     => 'nullable|max:16|regex:/^[a-zA-Z0-9\s\-\,\(\)\/]+$/',
                     'description'   => 'required|max:255|regex:/^[a-zA-Z0-9\s\-\,\(\)]+$/',
                 ],
                 [
@@ -212,7 +212,7 @@ class MasterDataDetailController extends Controller
                 [
                     'refid'         => 'required|numeric|gt:0',
                     'sequence'      => 'required|numeric|gt:0',
-                    'shortname'     => 'nullable|max:16|regex:/^[a-zA-Z0-9\s\-\,\(\)]+$/',
+                    'shortname'     => 'nullable|max:16|regex:/^[a-zA-Z0-9\s\-\,\(\)\/]+$/',
                     'description'   => 'required|max:255|regex:/^[a-zA-Z0-9\s\-\,\(\)]+$/',
                 ],
                 [

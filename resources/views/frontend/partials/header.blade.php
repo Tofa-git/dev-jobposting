@@ -19,16 +19,16 @@
 								-> get();
 						@endphp
 						<li class="nav-item dropdown bg-teal-hover">
-							<a class="nav-link dropdown-toggle text-nowrap mx-2" href="{{ $_menu->target_slug.$_menu->action }}" role="button" data-bs-toggle="dropdown">{{ $_menu->caption }}</a>
+							<a class="nav-link dropdown-toggle text-nowrap mx-2" href="{{ $_menu->target_url.$_menu->target_slug }}" role="button" data-bs-toggle="dropdown">{{ $_menu->caption }}</a>
 							<ul class="dropdown-menu shadow-sm rounded-0">
 								@foreach($_sub_menu as $sub_menu)
-									<li><a class="dropdown-item" href="{{ $sub_menu->target_slug.$sub_menu->action }}">{{ $sub_menu->caption }}</a></li>
+									<li><a class="dropdown-item" href="{{ $sub_menu->target_url.$sub_menu->target_slug }}">{{ $sub_menu->caption }}</a></li>
 								@endforeach
 							</ul>
 						</li>
 					@else
 						<li class="nav-item bg-teal-hover">
-							<a class="nav-link text-nowrap @if($active===str_replace(' ', '-', strtolower($_menu->caption))) active @endif mx-2" href="{{ $_menu->target_slug.$_menu->action }}">{{ $_menu->caption }}</a>
+							<a class="nav-link text-nowrap @if($active===str_replace(' ', '-', strtolower($_menu->caption))) active @endif mx-2" href="{{ $_menu->target_url.$_menu->target_slug }}">{{ $_menu->caption }}</a>
 						</li>
 					@endif
 				@endforeach

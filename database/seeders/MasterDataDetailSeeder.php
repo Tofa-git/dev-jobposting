@@ -65,7 +65,7 @@ class MasterDataDetailSeeder extends Seeder
             ],[
                 'refid'			=> 3,
                 'sequence'		=> 1,
-                'shortname'		=> null,
+                'shortname'		=> '/halaman',
                 'description'	=> 'Blank',
                 'status'		=> '0',
                 'created_by'    => 1,
@@ -73,7 +73,7 @@ class MasterDataDetailSeeder extends Seeder
             ],[
                 'refid'			=> 3,
                 'sequence'		=> 2,
-                'shortname'		=> null,
+                'shortname'		=> '/berita',
                 'description'	=> 'Berita',
                 'status'		=> '0',
                 'created_by'    => 1,

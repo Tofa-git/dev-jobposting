@@ -16,7 +16,7 @@ class halaman_website extends Model
 	protected $dates = ['deleted_at'];
 
     public function layout(){
-        return $this->belongsTo(master_data_detail::class,'id_layout','id')->select('id', 'description');
+        return $this->belongsTo(master_data_detail::class,'id_layout','id')->select('id', 'shortname', 'description');
     }
 
     public static function getFieldValue($id, $field){

@@ -18,7 +18,7 @@
 						</select>
 					</div>
 					<div class="col-sm-6">
-						<label for="url_halaman" class="small fw-bold">URL *)</label>
+						<label for="url_halaman" class="small fw-bold">Action *)</label>
 						<input type="text" class="form-control text-secondary bg-light @error('url_halaman') is-invalid @enderror" name="url_halaman" id="url_halaman" value="{{ old('url_halaman') ?? '/' }}" required />
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 			<div class="d-flex flex-shrink-1 px-3 justify-content-end">
 				<button type="submit" onclick="globalFunction.prosesButton(this); this.form.submit()" class="d-flex btn btn-primary bg-gradient me-2">
 					<i class="material-icons-outlined align-middle align-self-center">save</i>
-					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Simpan</span>
+					<span class="px-2 text-nowrap align-self-center">Simpan</span>
 				</button>
 				<a href="{{ route('halaman-website.index') }}" role="button" class="btn btn-danger bg-gradient">Kembali</a>
 			</div>

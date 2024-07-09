@@ -245,8 +245,83 @@ class HalamanWebsiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        if(User::canDelete($this->namaMenu)){
+            $_check_data = halaman_website::find($id);
+            if($_check_data){
+                $_data = halaman_website::where('id', $id)
+                    -> delete();
+                logActivities::addToLog('Halaman Website', 'Delete Halaman Website', 'delete Halaman Website untuk '.$_check_data->title, '0');
+                return Redirect::to(url()->previous())
+                    -> with('message', 'Halaman Website berhasil dihapus');
+            }else{
+                return Redirect::to(url()->previous())
+                    -> with('error', 'Halaman Website tidak ditemukan');
+            }
+        }else{
+            return view('error.403');
+        }
     }
+
+    public function status($id)
+    {
+        if(User::canSuspend($this->namaMenu)){
+            $_check_data = halaman_website::find($id);
+            if($_check_data){
+                if($_check_data->status === '3' || $_check_data->status === '1'){
+                    halaman_website::where('id', $id)
+                        -> update([
+                            'status' => '0'
+                    ]);
+                    logActivities::addToLog('Halaman Website', 'Update Status Halaman Website', 'Update status Halaman Website menjadi active untuk '.$_check_data->title, '0');
+                }elseif($_check_data->status === '0'){
+                    halaman_website::where('id', $id)
+                        -> update([
+                            'status' => '1'
+                    ]);
+                    logActivities::addToLog('Halaman Website', 'Update Status Halaman Website', 'Update status Halaman Website menjadi suspend untuk '.$_check_data->title, '0');
+                }
+                return Redirect::to(url()->previous())
+                    -> with('message', 'Status Halaman Website berhasil diupdate');
+            }else{
+                return Redirect::to(url()->previous())
+                    -> with('error', 'Proses gagal! Halaman Website sudah dihapus');                
+            }
+        }else{
+            return view('error.403');
+        }
+    }
+
+    public function publish($id)
+    {
+        if(User::canSuspend($this->namaMenu)){
+            $_check_data = halaman_website::find($id);
+            if($_check_data){
+                if($_check_data->published_by === 0){
+                    halaman_website::where('id', $id)
+                        -> update([
+                            'published_by'  => \Auth::user()->id,
+                            'published_at'  => now(),
+                    ]);
+                    logActivities::addToLog('Halaman Website', 'Publikasi Halaman Website', 'Publikasi Halaman Website untuk '.$_check_data->title, '0');
+                }else{
+                    halaman_website::where('id', $id)
+                        -> update([
+                            'published_by'  => 0,
+                            'published_at'  => null,
+                    ]);
+                    logActivities::addToLog('Halaman Website', 'Publikasi Halaman Website', 'Stop Publikasi Halaman Website untuk '.$_check_data->description, '0');
+                }
+                return Redirect::to(url()->previous())
+                    -> with('message', 'Status publihasi halaman website berhasil diupdate');
+            }else{
+                return Redirect::to(url()->previous())
+                    -> with('error', 'Proses gagal! Halaman Website tidak ditemukan');                
+            }
+        }else{
+            return view('error.403');
+        }
+    }
+
 }

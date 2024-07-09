@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('sequence')->default(0);
             $table->string('icon', 32)->nullable();
             $table->string('caption', 128)->nullable();
+            $table->string('target_url', 94)->nullable();
             $table->string('target_slug', 255)->nullable();
-            $table->text('action')->nullable();
             $table->bigInteger('published_by')->default(0);
             $table->dateTime('published_at')->nullable();
             $table->enum('status', ['0', '1', '2', '3'])->default('3');

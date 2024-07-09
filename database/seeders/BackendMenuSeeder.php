@@ -72,7 +72,7 @@ class BackendMenuSeeder extends Seeder
                 'icon'              => 'menu',
                 'shortname'         => 'Wegsite Menu',
                 'caption'           => 'WEBSITE MENU',
-                'action'            => '/backend/website-menu',
+                'action'            => '/web-content/website-menu',
                 'show'              => '0',
                 'create'            => '0',
                 'update'            => '0',

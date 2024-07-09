@@ -46,7 +46,7 @@
 				@if($data->isEmpty())
 					<tr>
 						<td align="center">*</td>
-						<td colspan="4">Tidak ada data</td>
+						<td colspan="5">Tidak ada data</td>
 					</tr>
 				@else
 					@php $_i=$data->firstItem(); @endphp
@@ -56,19 +56,20 @@
 							<td class="text-nowrap">{{ $_data->layout->description }}</td>
 							<td>
 								<div class="d-flex">
-									<div style="width: 150px; height: 100px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getThumbnailImage($_data->gambar_utama) }});" class="border"></div> 
+									<div style="max-width: 150px; min-width: 150px; height: 100px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getThumbnailImage($_data->gambar_utama) }});" class="border"></div> 
 									<div class="px-2">
 										<div class="fw-bold">{{ $_data->title }}</div> 
-										<div>{!! $_data->content !!}</div>
+										<div>{!! \App\Helpers\general::potongKalimat($_data->content, 100) !!}</div>
+										<div>Target URL : <span class="text-primary">{{ $_data->layout->shortname.$_data->url }}</span></div>
 									</div>
 								</div>
 							</td>
 							<td>
 								@if(\Auth::user()->hasPermission('Halaman Website', 'suspend'))
 									@if((int)$_data->published_by > 0)
-										<a href="{{ route('halaman-website.status', $_data->id) }}" role="button" class="btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Click for suspend">PUBLISH</a>
+										<a href="{{ route('halaman-website.publish', $_data->id) }}" role="button" class="btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Click for suspend">PUBLISH</a>
 									@else
-										<a href="{{ route('halaman-website.status', $_data->id) }}" role="button" class="btn btn-sm btn-secondary m-0 p-0 ps-2 pe-2" title="Click for activate">DRAFT</a>
+										<a href="{{ route('halaman-website.publish', $_data->id) }}" role="button" class="btn btn-sm btn-secondary m-0 p-0 ps-2 pe-2" title="Click for activate">DRAFT</a>
 									@endif
 								@endif
 							</td>
