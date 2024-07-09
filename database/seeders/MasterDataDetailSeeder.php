@@ -78,6 +78,14 @@ class MasterDataDetailSeeder extends Seeder
                 'status'		=> '0',
                 'created_by'    => 1,
                 'created_at'    => now(),
+            ],[
+                'refid'         => 3,
+                'sequence'      => 2,
+                'shortname'     => '/content',
+                'description'   => 'Content',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
             ],
         ]);
     }

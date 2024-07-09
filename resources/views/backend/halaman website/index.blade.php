@@ -37,6 +37,7 @@
 					<th width="30px">No</th>
 					<th width="100px">Layout</th>
 					<th>Informasi Halaman</th>
+					<th width="50px">Tanggal Publish</th>
 					<th width="50px">Publikasi</th>
 					<th width="50px">Status</th>
 					<th width="50px">Aksi</th>
@@ -46,7 +47,7 @@
 				@if($data->isEmpty())
 					<tr>
 						<td align="center">*</td>
-						<td colspan="5">Tidak ada data</td>
+						<td colspan="6">Tidak ada data</td>
 					</tr>
 				@else
 					@php $_i=$data->firstItem(); @endphp
@@ -61,9 +62,11 @@
 										<div class="fw-bold">{{ $_data->title }}</div> 
 										<div>{!! \App\Helpers\general::potongKalimat($_data->content, 100) !!}</div>
 										<div>Target URL : <span class="text-primary">{{ $_data->layout->shortname.$_data->url }}</span></div>
+										<div>Update : {{ $_data->updated_at ?? $_data->created_at }}</div>
 									</div>
 								</div>
 							</td>
+							<td>{{ $_data->published_at }}</td>
 							<td>
 								@if(\Auth::user()->hasPermission('Halaman Website', 'suspend'))
 									@if((int)$_data->published_by > 0)

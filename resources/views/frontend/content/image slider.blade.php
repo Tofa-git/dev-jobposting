@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade bg-midnightBlue shadow" data-bs-ride="carousel" style="margin-top: 60px;">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade bg-midnightBlue" data-bs-ride="carousel" style="margin-top: 60px;">
     <div class="carousel-indicators m-0 me-2 p-0 d-block w-auto" style="text-align: right;">
         @php $_i = 0; $_is_active = 'active'; $_current = true; @endphp
         @foreach($image_slider as $_image_slider)
@@ -42,18 +42,17 @@
     </div>
     <div class="bg-midnightBlue" style="height: 250px;"></div>
 </div>
-<div class="sliderCurva"></div>
+<div class="sliderCurva bg-light"></div>
 
 <style type="text/css">
       .sliderCurva{
-            background-color: #eeeeee;
             position: relative;
-            height: 100px;
+            height: 60px;
             width: 120%;
             margin-left: -10%;
             margin-right: 10%;
             z-index: 10;
-            margin-top: -40px;
+            margin-top: -60px;
             -webkit-border-radius: 200vh 200vh 0 0/20vh 20vh 0 0;
       }
 </style>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('refid');
             $table->foreign('refid')->references('id')->on('tbl_master_data');
             $table->integer('sequence')->default(0);
-            $table->string('shortname', 16)->nullable();
+            $table->string('shortname', 32)->nullable();
             $table->string('description', 255)->nullable();
             $table->enum('status', ['0', '1', '2', '3'])->default('3');
             $table->bigInteger('created_by')->default(0);

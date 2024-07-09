@@ -209,7 +209,7 @@ class data_file extends Model
             $_file = 'data:image/'.strtolower($_get_file->data->fileInfo->extension).';base64,'.base64_encode(file_get_contents(
             	public_path('storage'.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.str_replace('/', '', $_get_file->data->fileInfo->folder).DIRECTORY_SEPARATOR.$_get_file->data->fileInfo->filename)));
         }else{
-            $_file = 'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icon'.DIRECTORY_SEPARATOR.'404.jpg')));
+            $_file = 'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icons'.DIRECTORY_SEPARATOR.'404.jpg')));
         }
         return $_file;
     }
@@ -224,7 +224,7 @@ class data_file extends Model
             $_file = 'data:image/'.strtolower($_get_file->data->fileInfo->extension).';base64,'.base64_encode(file_get_contents(
             	public_path('storage'.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.str_replace('/', '', $_get_file->data->fileInfo->folder).DIRECTORY_SEPARATOR.$_get_file->data->fileInfo->filename)));
         }else{
-            $_file = 'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icon'.DIRECTORY_SEPARATOR.'404.jpg')));
+            $_file = 'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icons'.DIRECTORY_SEPARATOR.'404.jpg')));
         }
         return $_file;
     }

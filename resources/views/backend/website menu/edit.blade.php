@@ -46,6 +46,7 @@
 						<select class="form-select bg-white" name="url_halaman" id="url_halaman">
 							<option value="#" data-slug="" @if($data->target_url === '#') selected @endif>#</option>
 							<option value="/" data-slug="" @if($data->target_url === '/') selected @endif>/</option>
+							<option value="/content" data-slug="" @if($data->target_url === '/content') selected @endif>/content</option>
 							@foreach($halaman as $_halaman)
 								<option value="{{ $_halaman->layout->shortname }}" data-slug="{{ $_halaman->url }}" data-attr="{{ $_halaman->title }}" @if(($_halaman->layout->shortname.$_halaman->url) === ($data->target_url.$data->target_slug)) selected @endif>{{ $_halaman->url }}</option>
 							@endforeach

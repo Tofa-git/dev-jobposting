@@ -47,7 +47,7 @@ class frontendController extends Controller
         return view('maintenance');
     }
 
-    public function halaman(Request $request, $halaman)
+    public function halaman(Request $request, $layout, $halaman)
     {
         if(app_properties::haveFrontend()){
             $_active = $halaman;
@@ -59,7 +59,7 @@ class frontendController extends Controller
                 $_layout = strtolower(@$_data->layout->description);
                 $_info = app_properties::first();
                 $_result = view('welcome')
-                    -> with('pages', 'frontend.halaman')
+                    -> with('pages', 'frontend.layout halaman.'.$layout)
                     -> with('title', $_data->title)
                     -> with('content', $_data)
                     -> with('active', $_active)

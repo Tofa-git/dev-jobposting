@@ -33,10 +33,12 @@ html, body{
     background-color: rgba(0,0,0,0.1);
     transition: all .5s;
 }
+.text-darkOrange{color: darkOrange;}
 .text-white{color: white;}
 .text-feminim{color: #853266!important;}
 .text-gray25{color: #dddddd;}
 .text-lightBlue{color: lightBlue;}
+
 .text-hover-underline:hover{
     text-decoration: underline!important;
 }

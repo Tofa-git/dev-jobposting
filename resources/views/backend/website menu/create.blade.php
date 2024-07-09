@@ -45,6 +45,7 @@
 						<select class="form-select bg-white" name="url_halaman" id="url_halaman">
 							<option value="#" data-slug="" selected>#</option>
 							<option value="/" data-slug="">/</option>
+							<option value="/content" data-slug="">/content</option>
 							@foreach($halaman as $_halaman)
 								<option value="{{ $_halaman->layout->shortname }}" data-slug="{{ $_halaman->url }}" data-attr="{{ $_halaman->title }}">{{ $_halaman->url }}</option>
 							@endforeach

@@ -58,7 +58,8 @@ class HalamanWebsiteController extends Controller
                 -> withTrashed(false)
                 -> orderBy('sequence')
                 -> get();
-            $_data = halaman_website::whereRaw($_where)
+            $_data = halaman_website::select('id', 'id_layout', 'title', 'url', 'published_by', 'published_at', 'status', 'created_at', 'updated_at')
+                -> whereRaw($_where)
                 -> with('layout')
                 -> withTrashed(false)
                 -> paginate($_total)
@@ -133,8 +134,9 @@ class HalamanWebsiteController extends Controller
                     -> withInput();
             }
             $_file_name = [];
+            dd($request->all());
             if($request->hasFile('gambar_utama')){
-                $file           = $request->file('logo');
+                $file           = $request->file('gambar_utama');
                 $_file_name     = general::storeFile($file, 'pictures', 'Gambar utama halaman '.$request->judul, \Auth::user()->id);
                 if($_file_name){
                     $_file_name = json_decode($_file_name);
@@ -215,7 +217,7 @@ class HalamanWebsiteController extends Controller
                     -> withInput();
             }
             if($request->hasFile('gambar_utama')){
-                $file           = $request->file('logo');
+                $file           = $request->file('gambar_utama');
                 $_file_name     = general::storeFile($file, 'pictures', 'Gambar utama halaman '.$request->judul, \Auth::user()->id);
                 if($_file_name){
                     $_file_name = json_decode($_file_name);
