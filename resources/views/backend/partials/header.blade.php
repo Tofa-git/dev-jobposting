@@ -4,14 +4,14 @@
 <div class="flex-shrink-1 bg-midnightBlue" style="box-shadow: 0px 3px 5px #aaaaaa; z-index: 5">
 	<nav class="navbar navbar-expand-md navbar-light m-0">
 		<div class="d-flex flex-grow-1 m-0">
-			<a class="d-lg-none d-inline-block navbar-brand m-0 px-2 mx-1 bg-teal-hover d-flex text-light" href="#" data-bs-toggle="offcanvas" data-bs-target="#mobileAppMenu" aria-controls="mobileAppMenu">
+			<a class="d-lg-none d-inline-block navbar-brand m-0 px-2 mx-1 bg-light-hover d-flex text-light" href="#" data-bs-toggle="offcanvas" data-bs-target="#mobileAppMenu" aria-controls="mobileAppMenu">
 				<i class="material-icons-outlined align-middle align-self-center">apps</i>
 			</a>
 			<div class="flex-grow-1 m-0 px-2 d-flex align-self-center">
-				<a href="/dashboard" class="navbar-brand m-0 px-2 bg-teal-hover d-flex align-self-center">
+				<a href="/dashboard" class="navbar-brand m-0 px-2 bg-darken-hover d-flex align-self-center">
 					<div class="d-flex align-items-center">
 						<img src="{{ \App\Models\data_file::getLogo(@$info->logo) }}" class="img-fluid" style="max-height: 35px; height: auto; display: inline-block; vertical-align: middle;" class="img-fluid">
-						<div class="px-2 d-none d-md-block text-light">
+						<div class="px-2 text-light">
 							<span style="display: block; font-size: 10pt; line-height: 20px; font-weight: bold;">{{ $info->icon_text_1 }}</span>
 							<span style="display: block; font-size: 10pt; line-height: 16px;">{{ $info->icon_text_2 }}</span>
 						</div>
@@ -21,7 +21,7 @@
 			<div class="d-flex flex-grow-1 text-light"></div>
 			<div class="d-flex justify-content-end">
 				<div class="dropdown h-100 d-flex">
-					<a class="navbar-brand m-0 px-2 d-flex align-items-center mx-1 text-light bg-teal-hover" id="dropdownMenu1" data-bs-toggle="dropdown" href="#" aria-expanded="false" role="button">
+					<a class="navbar-brand m-0 px-2 d-flex align-items-center mx-1 text-light bg-darken-hover" id="dropdownMenu1" data-bs-toggle="dropdown" href="#" aria-expanded="false" role="button">
 						<i class="material-icons-outlined align-middle align-self-center">notifications</i>
 						<span class="badge bg-teal">0</span>
 					</a>

@@ -22,10 +22,10 @@
 			<div class="p-2 d-flex">
 				<a href="{{ route('halaman-website.create', ['refid'=>@$_REQUEST['refid']]) }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0" role="button">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+					<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
-					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
+					<span class="px-2 text-nowrap">Tambah</span>
 				</a>
 			</div>
 		</div>
@@ -156,19 +156,3 @@
 		</form>
 	</div>
 </div>
-
-@include('backend.partials.form', [
-	'modal_type'	=> 'modal-xl',
-	'title'			=> $title
-])
-
-@if(session()->has('modal'))
-
-@section('footer_style_script')
-<script type="module">
-	$(document).ready(function(){
-	});
-</script>
-@endsection
-
-@endif

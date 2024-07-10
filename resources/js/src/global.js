@@ -13,8 +13,8 @@ export function prosesButton(obj){
 export function disabledButton(obj){
 	let _check = obj.tagName;
 	if(_check === 'BUTTON'){
-		obj.getElementsByTagName('i')[0].classList.add('visually-hidden');
-		obj.getElementsByTagName('div')[0].classList.remove('visually-hidden');
+		obj.getElementsByTagName('i')[0].classList.add('d-none');
+		obj.getElementsByTagName('div')[0].classList.remove('d-none');
 	}
 	obj.disabled = true;
 }
@@ -22,8 +22,8 @@ export function disabledButton(obj){
 export function enabledButton(obj){
 	let _check = obj.tagName;
 	if(_check === 'BUTTON'){
-		obj.getElementsByTagName('i')[0].classList.remove('visually-hidden');
-		obj.getElementsByTagName('div')[0].classList.add('visually-hidden');
+		obj.getElementsByTagName('i')[0].classList.remove('d-none');
+		obj.getElementsByTagName('div')[0].classList.add('d-none');
 	}
 	obj.disabled = false;
 }

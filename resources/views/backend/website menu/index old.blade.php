@@ -1,58 +1,7 @@
 <div class="ms-2 p-1 px-3 bg-white shadow-sm" style="border-bottom-left-radius: 10px">
 	<span class="fs-4 fw-lighter">{{ $title }}</span>
 </div>
-<div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-auto ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
-	<div class="flex-shrink-1 bg-light p-2 pt-3">
-		<div class="border position-relative rounded-3 p-2">
-			<div class="bg-light position-absolute" style="margin-top: -20px"><span class="lh-sm small px-2"> Preview Menu</span></div>
-			<div class="d-flex flex-column bg-midnightBlue rounded-3 mt-2">
-				<nav class="navbar navbar-expand-xl navbar-dark m-0 p-0 shadow-sm">
-					<div class="container">
-						<a href="/" class="navbar-brand bg-teal-hover d-flex align-self-center px-2">
-							<img src="@if(!is_null($info->icon_logo)) {{ asset('assets/upload/pictures/320x480/'.$info->icon_logo) }} @else {{ asset('assets/images/logo.png') }} @endif" style="width: 40px; height: auto" />
-							<div class="d-flex flex-column align-self-center text-light">
-								<span class="fs-5 ms-1">{{ @$info->icon_text_2 ?? config('app.name', 'Laravel') }}</span>
-							</div>
-						</a>
-						<button class="btn btn-sm d-xl-none d-block" data-bs-toggle="offcanvas" data-bs-target="#prevMobileMenu" aria-controls="prevMobileMenu">
-							<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-						</button>
-						<div class="offcanvas offcanvas-end" tabindex="-1" id="prevMobileMenu" aria-labelledby="offcanvasNavbarLabel">
-						</div>
-						
-
-						<div class="collapse navbar-collapse" id="menu-website">
-							<ul class="navbar-nav ms-auto text-nowrap">
-								@foreach($data as $_data)
-									@if($_data->published_by > 0)
-										@if($_data->jml_sub > 0)
-@php
-	$_sub_menu = \App\Models\frontend_menu::whereRaw('status="0" And refid='.$_data->id.' And published_by > 0 And Not IsNull(published_at)')
-		-> groupByRaw('id')
-		-> get();
-@endphp
-											<li class="nav-item dropdown bg-darken-hover">
-												<a class="nav-link dropdown-toggle text-nowrap mx-2" href="#" role="button" data-bs-toggle="dropdown">{{ $_data->caption }}</a>
-												<ul class="dropdown-menu shadow-sm rounded-0">
-													@foreach($_sub_menu as $sub_menu)
-														<li class="bg-teal-hover"><a class="dropdown-item" href="#">{{ $sub_menu->caption }}</a></li>
-													@endforeach
-												</ul>
-											</li>
-										@else
-											<li class="nav-item bg-darken-hover">
-												<a class="nav-link text-nowrap mx-2" href="#">{{ $_data->caption }}</a>
-											</li>
-										@endif
-									@endif
-								@endforeach
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
+<div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-hidden ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
 	<div class="flex-shrink-1 bg-light">
 		<div class="d-flex border-bottom">
 			<div class="d-flex flex-grow-1 p-2">
@@ -71,7 +20,7 @@
 			<div class="p-2 d-flex">
 				<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('website-menu.create') }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
+					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
@@ -79,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex-fill flex-column p-0 px-3" style="overflow-x: auto!important;">
+	<div class="flex-fill flex-column p-0 px-3" style="overflow-x: auto!important; border: 3px solid black;">
 		<table class="table table-striped table-hover w-100" cellpadding="0" cellspacing="0">
 			<thead>
 				<tr class="text-nowrap">
@@ -133,9 +82,9 @@
 							<td class="text-nowrap">
 								@if(is_null($_data->deleted_at))
 									@if(\Auth::user()->hasPermission('Website Menu', 'update'))
-										<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('website-menu.edit', $_data) }}" class="d-inline-flex btn btn-outline-primary btn-sm p-0 px-2" title="Edit">
+										<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('website-menu.edit', $_data) }}" class="btn btn-sm btn-outline-primary p-0 px-2 d-inline-flex align-items-center" title="Edit">
 											<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
-											<div class="spinner-border spinner-border-sm m-spinner-small m-1 d-none" role="status">
+											<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 												<span class="visually-hidden">Loading...</span>
 											</div>
 										</button>
@@ -154,7 +103,6 @@
 								@endif
 							</td>
 						</tr>
-
 						@php $_i++; @endphp
 						@if($_data->jml_sub > 0)
 @php
@@ -193,7 +141,7 @@
 											@if(\Auth::user()->hasPermission('Website Menu', 'update'))
 												<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('website-menu.edit', $_sub_menu) }}" class="btn btn-sm btn-outline-primary p-0 px-2 d-inline-flex align-items-center" title="Edit">
 													<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
-													<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
+													<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
 														<span class="visually-hidden">Loading...</span>
 													</div>
 												</button>

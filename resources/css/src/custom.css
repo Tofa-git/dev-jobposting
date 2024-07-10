@@ -13,10 +13,23 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 );
 }
 
+.bg-darken-hover:hover{
+    background-color: rgba(0,0,0,0.25);
+    color: yellow!important;
+    transition: all ease-in-out .25s;
+}
+
+.bg-warning-hover:hover{
+    background-color: yellow;
+    color: black!important;
+    transition: all ease-in-out .25s;
+}
+
 .bg-danger-hover:hover{
     background-color: red;
     transition: all ease-in-out .25s;
 }
+
 .bg-teal-hover:hover{
     background-color: teal;
     transition: all ease-in-out .25s;

@@ -20,7 +20,7 @@
 			<div class="p-2 d-flex">
 				<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('master-data.create') }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
 					<i class="material-icons-outlined align-middle align-self-center">add</i>
-					<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+					<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 					<span class="px-2 d-none d-sm-flex text-nowrap align-self-center">Tambah</span>
@@ -66,7 +66,7 @@
 									@if(\Auth::user()->hasPermission('Master Data', 'update'))
 										<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('master-data.edit', $_data) }}" class="btn btn-sm btn-outline-primary p-0 px-2 d-inline-flex align-items-center" title="Edit">
 											<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
-											<div class="spinner-border spinner-border-sm visually-hidden m-spinner-small m-1" role="status">
+											<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
 												<span class="visually-hidden">Loading...</span>
 											</div>
 										</button>
