@@ -58,7 +58,7 @@ class HalamanWebsiteController extends Controller
                 -> withTrashed(false)
                 -> orderBy('sequence')
                 -> get();
-            $_data = halaman_website::select('id', 'id_layout', 'title', 'url', 'published_by', 'published_at', 'status', 'created_at', 'updated_at')
+            $_data = halaman_website::select('id', 'id_layout', 'title', 'url', 'gambar_utama', 'published_by', 'published_at', 'status', 'created_at', 'updated_at')
                 -> whereRaw($_where)
                 -> with('layout')
                 -> withTrashed(false)
@@ -125,7 +125,7 @@ class HalamanWebsiteController extends Controller
                     'mimes' => 'Type file yang anda upload salah!',
                     'gambar_utama.max' => 'File yang anda upload tidak boleh lebih dari 2MB!',
                     'meta_title.max' => 'Maksimal meta title adalah 100 karakter!',
-                    'gambar_utama.max' => 'Maksimal meta description adalah 150 karakter!',
+                    'meta_description.max' => 'Maksimal meta description adalah 150 karakter!',
                 ]
             );
             if ($validator->fails()){
@@ -134,7 +134,6 @@ class HalamanWebsiteController extends Controller
                     -> withInput();
             }
             $_file_name = [];
-            dd($request->all());
             if($request->hasFile('gambar_utama')){
                 $file           = $request->file('gambar_utama');
                 $_file_name     = general::storeFile($file, 'pictures', 'Gambar utama halaman '.$request->judul, \Auth::user()->id);
@@ -208,7 +207,7 @@ class HalamanWebsiteController extends Controller
                     'mimes' => 'Type file yang anda upload salah!',
                     'gambar_utama.max' => 'File yang anda upload tidak boleh lebih dari 2MB!',
                     'meta_title.max' => 'Maksimal meta title adalah 100 karakter!',
-                    'gambar_utama.max' => 'Maksimal meta description adalah 150 karakter!',
+                    'meta_description.max' => 'Maksimal meta description adalah 150 karakter!',
                 ]
             );
             if ($validator->fails()){

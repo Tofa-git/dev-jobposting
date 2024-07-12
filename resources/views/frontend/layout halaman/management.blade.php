@@ -6,7 +6,7 @@
 @endphp
 <div class="position-relative" style="z-index: -1; margin-top: 70px; height: 250px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getImage($content->gambar_utama) }});">
 	<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: rgba(0,0,0,0.85)"></div>
-	<div class="container position-relative">
+	<div class="container position-relative" style="z-index: 1">
 		<div class="d-flex align-items-center pt-5 pb-3">
 			<a href="/" class="text-decoration-none text-info fs-6">Beranda</a>
 			<i class="material-icons text-secondary px-2 small text-info">chevron_right</i>

@@ -15,14 +15,14 @@
 		</div>
 		<div class="col-sm-8 m-0 p-3">
 			<div class="rounded-3 p-3 bg-light border shadow-sm">
-				<h4 class="lh-sm m-0 p-0 text-secondary fw-bold">Statistik Kenaikan Gaji Berkala</h4>
+				<h4 class="lh-sm m-0 p-0 text-secondary fw-bold">Statistik Job Posting RUN8</h4>
 				<div class="row">
 					<div class="col mt-2 d-flex">
 						<div class="bg-warning bg-gradient rounded-1 d-flex align-items-center justify-content-center" style="min-width: 45px; height: 45px">
 							<i class="material-icons-outlined text-light">list</i>
 						</div>
 						<div class="flex-grow-1 d-flex flex-column ms-2 overflow-hidden">
-							<span class="lh-sm small text-secondary text-nowrap">Usulan SKPD</span>
+							<span class="lh-sm small text-secondary text-nowrap">Mitra</span>
 							<span class="lh-sm fs-4 fw-bold">0</span>
 						</div>
 					</div>
@@ -31,7 +31,7 @@
 							<i class="material-icons-outlined text-light">fact_check</i>
 						</div>
 						<div class="flex-grow-1 d-flex flex-column ms-2 overflow-hidden">
-							<span class="lh-sm small text-secondary text-nowrap">Verifikasi</span>
+							<span class="lh-sm small text-secondary text-nowrap">Klien</span>
 							<span class="lh-sm fs-4 fw-bold">0</span>
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 							<i class="material-icons-outlined text-light">event_available</i>
 						</div>
 						<div class="flex-grow-1 d-flex flex-column ms-2 overflow-hidden">
-							<span class="lh-sm small text-secondary text-nowrap">Selesai</span>
+							<span class="lh-sm small text-secondary text-nowrap">Pelamar</span>
 							<span class="lh-sm fs-4 fw-bold">0</span>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 							<i class="material-icons-outlined text-light">event_busy</i>
 						</div>
 						<div class="flex-grow-1 d-flex flex-column ms-2 overflow-hidden">
-							<span class="lh-sm small text-secondary text-nowrap">Ditolak</span>
+							<span class="lh-sm small text-secondary text-nowrap">Lowongan</span>
 							<span class="lh-sm fs-4 fw-bold">0</span>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 		</div>
 		<div class="col-sm-8 m-0 p-3">
 			<div class="rounded-3 bg-white border p-3 d-flex flex-column" style="height: 400px">
-				<h5 class="lh-sm m-0 p-0 text-secondary fw-bold">Statistik KGB Tahun {{ date_format(now(), 'Y') }}</h5>
+				<h5 class="lh-sm m-0 p-0 text-secondary fw-bold">Statistik Lowongan VS Pelamar {{ date_format(now(), 'Y') }}</h5>
 				<div id="chart" class="mt-2 flex-grow-1 border-top"></div>
 			</div>
 		</div>

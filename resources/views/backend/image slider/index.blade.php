@@ -1,7 +1,7 @@
 <div class="ms-2 p-1 px-3 bg-white shadow-sm" style="border-bottom-left-radius: 10px">
 	<span class="fs-4 fw-lighter">{{ $title }}</span>
 </div>
-<div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-auto ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
+<div class="d-flex flex-fill flex-column shadow-sm bg-white overflow-hidden ms-2 mt-1" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd;">
 	<div class="flex-shrink-1 bg-light">
 		<div class="d-flex border-bottom">
 			<div class="d-flex flex-grow-1 p-2">
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="d-flex flex-fill flex-column p-0 px-3" style="overflow-x: auto!important;">
+	<div class="d-flex flex-fill flex-column p-0 px-3" style="overflow: auto!important;">
 		<table class="table table-striped table-hover w-100" cellpadding="0" cellspacing="0">
 			<thead>
 				<tr class="text-nowrap">
@@ -56,7 +56,11 @@
 							<td align="center">{{ $_i }}</td>
 							<td class="text-nowrap">{{ $_data->title }}</td>
 							<td>
-								<div class="d-flex">
+								<div class="content-container d-flex align-items-center bg-midnightBlue p-3" style="width: 400px; height: 150px;">
+									<div class="flex-grow-1 text-light d-flex flex-column">{!! $_data->content !!}</div>
+									<div class="p-2">
+										<img src="{{ \App\Models\data_file::getThumbnailImage($_data->file_background) }}" alt="{{ $_data->title }}" style="width: 150px" />
+									</div>
 								</div>
 							</td>
 							<td>{{ $_data->published_at }}</td>
@@ -122,9 +126,9 @@
 				<div class="col-sm-4 small">Tampilkan</div>
 				<div class="col-sm-8">
 					<select class="form-select bg-white" name="total">
+						<option value="15" @if((int)$total === 15) selected @endif>15</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50</option>
-						<option value="100" @if((int)$total === 100) selected @endif>100</option>
 					</select>
 				</div>
 			</div>
@@ -138,18 +142,11 @@
 	</div>
 </div>
 
-@include('backend.partials.form', [
-	'modal_type'	=> 'modal-lg',
-	'title'			=> $title
-])
-
-@if(session()->has('modal'))
-
-@section('footer_style_script')
-<script type="module">
-	$(document).ready(function(){
-	});
-</script>
-@endsection
-
-@endif
+<style type="text/css">
+	.content-container > div > h1{
+		font-size: 0.8em!important;
+	}
+	.content-container > div > p{
+		font-size: 0.4em!important;
+	}
+</style>

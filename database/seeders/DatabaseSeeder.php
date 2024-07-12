@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         	BackendMenuSeeder::class,
         	GroupRoleSeeder::class,
         	UserRoleSeeder::class,
+            DataWilayahSeeder::class,
         ]);
     }
 }

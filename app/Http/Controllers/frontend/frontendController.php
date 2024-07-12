@@ -11,6 +11,7 @@ use App\Models\posting_berita;
 use App\Models\halaman_website;
 use App\Models\informasi_penting;
 use App\Models\data_file;
+use App\Models\wilayah_administrasi;
 use Redirect;
 use App\Traits\apiResponser;
 
@@ -28,12 +29,21 @@ class frontendController extends Controller
                 -> get();
             $_berita = [];
             $_info = app_properties::first();
+            $_provinsi = wilayah_administrasi::whereRaw('length(kode)=2')
+                -> get();
+            $_kabupaten = [];
+            $_kecamatan = [];
+            $_kelurahan = [];
 			$_result = view('welcome')
     	        -> with('pages', 'frontend.home')
                 -> with('active', $_active)
                 -> with('info', $_info)
                 -> with('image_slider', $_image_slider)
                 -> with('berita', $_berita)
+                -> with('provinsi', $_provinsi)
+                -> with('kabupaten', $_kabupaten)
+                -> with('kecamatan', $_kecamatan)
+                -> with('kelurahan', $_kelurahan)
                 -> render();
             $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
             return $_result;

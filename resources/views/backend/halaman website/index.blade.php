@@ -57,7 +57,7 @@
 							<td class="text-nowrap">{{ $_data->layout->description }}</td>
 							<td>
 								<div class="d-flex">
-									<div style="max-width: 150px; min-width: 150px; height: 100px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getThumbnailImage($_data->gambar_utama) }});" class="border"></div> 
+									<div style="max-width: 150px; min-width: 150px; height: 100px; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url({{ \App\Models\data_file::getImage($_data->gambar_utama) }});" class="border"></div> 
 									<div class="px-2">
 										<div class="fw-bold">{{ $_data->title }}</div> 
 										<div>{!! \App\Helpers\general::potongKalimat($_data->content, 100) !!}</div>
@@ -131,9 +131,9 @@
 				<div class="col-sm-4 small">Tampilkan</div>
 				<div class="col-sm-8">
 					<select class="form-select bg-white" name="total">
+						<option value="15" @if((int)$total === 15) selected @endif>15</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50</option>
-						<option value="100" @if((int)$total === 100) selected @endif>100</option>
 					</select>
 				</div>
 			</div>
