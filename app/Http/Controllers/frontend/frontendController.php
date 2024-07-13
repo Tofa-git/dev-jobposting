@@ -12,6 +12,7 @@ use App\Models\halaman_website;
 use App\Models\informasi_penting;
 use App\Models\data_file;
 use App\Models\wilayah_administrasi;
+use App\Models\landing_page;
 use Redirect;
 use App\Traits\apiResponser;
 
@@ -24,26 +25,18 @@ class frontendController extends Controller
 	{
 		if(app_properties::haveFrontend()){
             $_active = 'home';
-            $_image_slider = image_slider::whereRaw('status="0" And published_by > 0')
-                -> orderByRaw('sequence')
-                -> get();
             $_berita = [];
-            $_info = app_properties::first();
-            $_provinsi = wilayah_administrasi::whereRaw('length(kode)=2')
+            $_landing_page = landing_page::where('status', '0')
+                -> where('published_by', '>', 0)
+                -> with('widget')
+                -> withTrashed(false)
+                -> orderBy('sequence')
                 -> get();
-            $_kabupaten = [];
-            $_kecamatan = [];
-            $_kelurahan = [];
 			$_result = view('welcome')
     	        -> with('pages', 'frontend.home')
                 -> with('active', $_active)
-                -> with('info', $_info)
-                -> with('image_slider', $_image_slider)
+                -> with('landing_page', $_landing_page)
                 -> with('berita', $_berita)
-                -> with('provinsi', $_provinsi)
-                -> with('kabupaten', $_kabupaten)
-                -> with('kecamatan', $_kecamatan)
-                -> with('kelurahan', $_kelurahan)
                 -> render();
             $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
             return $_result;

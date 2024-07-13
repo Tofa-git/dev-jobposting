@@ -1,4 +1,10 @@
-<div id="carouselExampleIndicators" class="carousel slide bg-midnightBlue" data-bs-ride="carousel" style="margin-top: 69px;">
+@php
+    $image_slider = \App\Models\image_slider::whereRaw('status="0" And published_by > 0')
+        -> orderByRaw('sequence')
+        -> get();
+@endphp
+
+<div id="carouselExampleIndicators" class="carousel slide bg-midnightBlue" data-bs-ride="carousel">
     <div class="carousel-indicators m-0 me-2 p-0 d-none d-md-block w-auto" style="text-align: center; height: 25px">
         @php $_i = 0; $_is_active = 'active'; $_current = true; @endphp
         @foreach($image_slider as $_image_slider)

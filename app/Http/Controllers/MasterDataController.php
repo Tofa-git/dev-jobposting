@@ -44,7 +44,7 @@ class MasterDataController extends Controller
                 return Redirect::to(url()->previous())
                     -> withErrors($validator);
             }
-            $_total = 15;
+            $_total = 25;
             if(isset($request->total)){
                 $_total = $request->total;
             }

@@ -98,6 +98,36 @@ class MasterDataSeeder extends Seeder
                 'status'        => '0',
                 'created_by'    => 1,
                 'created_at'    => now(),
+            ],[
+                'type'          => '0',
+                'description'   => 'Kategori Berita',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ],[
+                'type'          => '0',
+                'description'   => 'Jenis Berita',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ],[
+                'type'          => '0',
+                'description'   => 'Widget',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ],[
+                'type'          => '0',
+                'description'   => 'Jenis Klien',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ],[
+                'type'          => '0',
+                'description'   => 'Jenis Kerjasama',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
             ]
         ]);
     }

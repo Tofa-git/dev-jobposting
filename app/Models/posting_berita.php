@@ -15,8 +15,16 @@ class posting_berita extends Model
 	protected $guarded = [];
 	protected $dates = ['deleted_at'];
 
+    public function jenisBerita(){
+        return $this->belongsTo(master_data_detail::class,'id_jenis','id')->select('id', 'description');
+    }
+
     public function kategoriBerita(){
         return $this->belongsTo(master_data_detail::class,'id_kategori','id')->select('id', 'description');
+    }
+
+    public function postUser(){
+        return $this->belongsTo(User::class,'created_by','id')->select('id', 'name', 'email');
     }
 
     public static function getFieldValue($id, $field){

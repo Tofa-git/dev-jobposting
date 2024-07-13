@@ -1,5 +1,4 @@
-@include('frontend.widget.image slider')
-<div class="container" style="z-index: 11; position: relative;">
-	@include('frontend.widget.pencarian')
-</div>
-@include('frontend.partials.footer')
+<div style="height: 70px"></div> 
+@foreach($landing_page as $_landing_page)
+	@include('frontend.'.$_landing_page->widget->target)
+@endforeach

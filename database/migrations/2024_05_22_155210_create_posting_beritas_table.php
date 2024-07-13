@@ -20,7 +20,7 @@ class CreatePostingBeritasTable extends Migration
             $table->string('title', 255);
             $table->string('slug', 255)->nullable();
             $table->text('foto_utama')->nullable();
-            $table->string('keterangan_foto', 128)->nullable();
+            $table->string('keterangan_foto', 255)->nullable();
             $table->text('content')->nullable();
             $table->string('meta_title', 128)->nullable();
             $table->string('meta_description', 255)->nullable();
@@ -31,6 +31,7 @@ class CreatePostingBeritasTable extends Migration
             $table->bigInteger('dishare')->default(0);
             $table->enum('status', ['0', '1', '2', '3'])->default('3');
             $table->foreignId('created_by')->constrained('users');
+            $table->bigInteger('updated_by')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

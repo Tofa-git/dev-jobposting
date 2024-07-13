@@ -7,9 +7,9 @@
 			<div class="d-flex flex-grow-1 p-2">
 				<form class="d-flex flex-grow-1">
 					<select name="total" class="form-select small bg-white border-grey" style="width: 125px">
-						<option value="15" @if((int)$total === 15) selected @endif>15 Baris</option>
 						<option value="25" @if((int)$total === 25) selected @endif>25 Baris</option>
 						<option value="50" @if((int)$total === 50) selected @endif>50 Baris</option>
+						<option value="100" @if((int)$total === 100) selected @endif>100 Baris</option>
 					</select>
 					<div class="flex-grow-1 input-group ms-2 d-none d-sm-flex">
 						<input name="q" type="text" class="form-control bg-white border-grey" value="{{ @$_REQUEST['q'] }}" placeholder="Descriptions">

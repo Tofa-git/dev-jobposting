@@ -5,11 +5,11 @@
 		<div class="row p-2">
 			<div class="col-sm-4 small lh-sm mt-3">
 				<div class="d-flex text-light">
-					<i class="material-icons align-self-start fs-6 p-1" style="max-width: 30px; min-width: 30px">location_on</i>
+					<i class="material-icons-outlined align-self-start fs-6 p-1" style="max-width: 30px; min-width: 30px">location_on</i>
 					<div class="ms-2 flex-grow-1">{{ $info->address }}</div>
 				</div>
 				<div class="d-flex text-light mt-3">
-					<i class="material-icons fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">call</i>
+					<i class="material-icons-outlined fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">call</i>
 					<div class="ms-2 flex-grow-1 fw-bold">Nomor Telpon/Fax</div>
 				</div>
 				<div class="d-flex text-light">
@@ -21,7 +21,7 @@
 					<div class="ms-2 flex-grow-1">{{ $info->fax ?? '-' }} (Fax)</div>
 				</div>
 				<div class="d-flex text-light mt-3">
-					<i class="material-icons fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">mail</i>
+					<i class="material-icons-outlined fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">mail</i>
 					<div class="ms-2 flex-grow-1 fw-bold">Surat Elektronik</div>
 				</div>
 				<div class="d-flex text-light">
@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="d-flex text-light">
-							<i class="material-icons fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">lan</i>
+							<i class="material-icons-outlined fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">lan</i>
 							<div class="ms-2 flex-grow-1 fw-bold">Sitemap</div>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="d-flex text-light">
-							<i class="material-icons fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">public</i>
+							<i class="material-icons-outlined fs-6 align-self-start p-1" style="max-width: 30px; min-width: 30px">public</i>
 							<div class="ms-2 flex-grow-1 fw-bold">Ikuti Kami</div>
 						</div>
 					</div>

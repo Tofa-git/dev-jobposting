@@ -1,3 +1,13 @@
+@php
+	$provinsi = \App\Models\wilayah_administrasi::whereRaw('length(kode)=2')
+		-> get();
+	$kabupaten = [];
+	$kecamatan = [];
+	$kelurahan = [];
+@endphp
+
+<div class="container" style="z-index: 11; position: relative;">
+
 <div class="pb-4" style="margin-top: -200px">
 	<div class="row">
 		<div class="col-sm-12 text-center d-flex flex-md-row flex-column justify-content-center">
@@ -117,13 +127,8 @@
 		</div>
 	</div>
 </div>
-<style type="text/css">
-	.list-berita:hover{
-		color: #853266;
-		background-color: #eeeeee;
-		transition: all 0.5s;
-	}
-</style>
+
+</div>
 
 <script type="module">
 	$('#provinsi').select2({
