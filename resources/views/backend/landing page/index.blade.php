@@ -22,6 +22,32 @@
 					<div class="d-flex flex-fill list-group-item list-group-item-action list-group-item-light">
 						<div style="width: 30px;">{{ $_data->sequence }}</div>
 						<label class="flex-grow-1 form-check-label">{{ $_data->description }}</label>
+						@if(\Auth::user()->hasPermission('Landing Page', 'suspend'))
+							@if($_data->status==='0')
+								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Sudah dimasukkan"><i class="material-icons-outlined p-1 d-flex fs-6">check</i></a>
+							@elseif($_data->status==='1')
+								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-warning bg-gradient m-0 p-0 ps-2 pe-2" title="Pending"><i class="material-icons-outlined p-1 d-flex fs-6">warning</i></a>
+							@elseif($_data->status==='3')
+								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-secondary bg-gradient m-0 p-0 ps-2 pe-2"><i class="material-icons-outlined p-1 d-flex fs-6" title="Belum dimasukkan">block</i></a>
+							@endif
+						@endif
+						@if(\Auth::user()->hasPermission('Landing Page', 'update'))
+							<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('landing-page.edit', $_data) }}" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Edit">
+								<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
+								<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							</button>
+						@endif
+						@if(\Auth::user()->hasPermission('Landing Page', 'delete'))
+							<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('landing-page.destroy', $_data) }}" class="d-inline">
+								@csrf()
+								@method('delete')
+								<button type="submit" class="flex-shrink-1 btn btn-sm btn-outline-danger bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Delete" role="button">
+									<i class="material-icons-outlined p-1 d-flex fs-6">clear</i>
+								</button>
+							</form>
+						@endif
 					</div>
 				@else
 				<div class="d-flex flex-fill list-group-item list-group-item-action list-group-item-light">

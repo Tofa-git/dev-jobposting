@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         	UserRoleSeeder::class,
             DataWilayahSeeder::class,
             WidgetSeeder::class,
+            LandingPageSeeder::class,
         ]);
     }
 }
