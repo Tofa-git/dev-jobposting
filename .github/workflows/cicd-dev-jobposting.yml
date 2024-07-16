@@ -46,6 +46,7 @@ jobs:
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           port: 1945
           script: |
+            sudo su
             cd /var/www/html/dev-jobposting
             git add .
             git commit -m "Update"
