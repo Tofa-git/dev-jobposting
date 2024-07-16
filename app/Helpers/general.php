@@ -85,7 +85,7 @@ class general
             date_add($date, date_interval_create_from_date_string("5 hours"));
             $param = [
                 'user' => $_user->email,
-                'origin' => config('app.url')
+                'origin' => config('app.url'),
                 'role' => 'guest',
                 'date_request' => date_format($date_req, 'Y-m-d h:i:s'),
                 'date_expired' => date_format($date, 'Y-m-d h:i:s'),
