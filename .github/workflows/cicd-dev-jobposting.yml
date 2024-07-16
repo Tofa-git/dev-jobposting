@@ -55,7 +55,7 @@ jobs:
             git pull origin --rebase
             git pull origin main
             php artisan storage:link
-            php artisan migrate:fresh --seed
+            php artisan migrate
             npm i
             npm run build
             php artisan route:cache
