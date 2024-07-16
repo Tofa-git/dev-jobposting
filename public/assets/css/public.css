@@ -108,6 +108,7 @@ main{
 .navbar-nav > .nav-item > .active{
     font-family: "Abel", sans-serif;
 	font-weight: bold!important;
+    color: yellow!important;
 	font-size: 12pt;
 }
 

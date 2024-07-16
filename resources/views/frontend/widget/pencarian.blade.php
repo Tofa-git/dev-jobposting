@@ -46,7 +46,7 @@
 										<label for="provinsi">Lokasi Kerja</label>
 									</div>
 									<div class="col-md-9">
-										<select class="form-select rounded-0 bg-white" name="provinsi" id="provinsi" data-target="test">
+										<select class="form-select rounded-0 bg-white" name="provinsi" id="provinsi" data-target="{{ route('public.wilayah-administrasi') }}">
 											<option value="0">Seluruh Provinsi</option>
 											@foreach($provinsi as $_provinsi)
 												<option value="{{ $_provinsi->kode }}" @if(@$_REQUEST['provinsi']===$_provinsi->kode) selected @endif>{{ $_provinsi->nama }}</option>

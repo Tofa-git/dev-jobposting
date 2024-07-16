@@ -35,7 +35,7 @@ class OpenApiController extends Controller
                     $_where = 'status="0" And length(kode)=2';
                     $_data = wilayah_administrasi::whereRaw($_where)
                         -> get();
-                    }
+                }
             }
             return response()->json([
                 'status'    =>false,
