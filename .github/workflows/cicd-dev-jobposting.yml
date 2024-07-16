@@ -45,10 +45,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           port: 1945
-      - name: Deploy to Production
-        env:
-          DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
-        run:
+          script: |
             cd /var/www/html/dev-jobposting
             git add .
             git commit -m "Update"
