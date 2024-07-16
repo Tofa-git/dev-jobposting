@@ -42,10 +42,14 @@ jobs:
       - name: Setup Deployer
         uses: shimataro/ssh-key-action@v2
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          # password: ${{ secrets.PASSWORD }}
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          name: id_rsa-YOUR_USER
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          config: |
+            Host 103.172.205.67
+              HostName 103.172.205.67
+              User root
+              IdentityFile ~/.ssh/id_rsa-dev-jobposting
           port: 1945
           script: |
             cd /var/www/html/dev-jobposting
