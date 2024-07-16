@@ -1,9 +1,6 @@
 @php
 	$provinsi = \App\Models\wilayah_administrasi::whereRaw('length(kode)=2')
 		-> get();
-	$kabupaten = [];
-	$kecamatan = [];
-	$kelurahan = [];
 @endphp
 
 <div class="container" style="z-index: 11; position: relative;">
@@ -45,11 +42,11 @@
 						<div class="border border-1 border-secondary bg-light rounded-2 mt-2 p-3">
 							<form>
 								<div class="row mt-1">
-									<div class="col-md-4">
-										<label for="provinsi">Provinsi</label>
+									<div class="col-md-3">
+										<label for="provinsi">Lokasi Kerja</label>
 									</div>
-									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" name="provinsi" id="provinsi">
+									<div class="col-md-9">
+										<select class="form-select rounded-0 bg-white" name="provinsi" id="provinsi" data-target="test">
 											<option value="0">Seluruh Provinsi</option>
 											@foreach($provinsi as $_provinsi)
 												<option value="{{ $_provinsi->kode }}" @if(@$_REQUEST['provinsi']===$_provinsi->kode) selected @endif>{{ $_provinsi->nama }}</option>
@@ -58,50 +55,20 @@
 									</div>
 								</div>
 								<div class="row mt-1">
-									<div class="col-md-4">
-										<label for="kabupaten">Kabupaten</label>
-									</div>
-									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" name="kabupaten" id="kabupaten">
-											<option value="0" selected>Pilih kabupaten</option>
-										</select>
-									</div>
-								</div>
-								<div class="row mt-1">
-									<div class="col-md-4">
-										<label for="kecamatan">Kecamatan</label>
-									</div>
-									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" name="kecamatan" id="kecamatan">
-											<option value="0" selected>Pilih kecamatan</option>
-										</select>
-									</div>
-								</div>
-								<div class="row mt-1">
-									<div class="col-md-4">
-										<label for="kelurahan">Kelurahan</label>
-									</div>
-									<div class="col-md-8">
-										<select class="form-select rounded-0 bg-white" name="kelurahan" id="kelurahan">
-											<option value="0" selected>Pilih provinsi</option>
-										</select>
-									</div>
-								</div>
-								<div class="row mt-1">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label for="bidang">Bidang Pekerjaan</label>
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-9">
 										<select class="form-select rounded-0 bg-white" name="bidang" id="bidang">
 											<option value="0" selected>Pilih Bidang Pekerjaan</option>
 										</select>
 									</div>
 								</div>
 								<div class="row mt-1">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label for="level">Level Jabatan</label>
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-9">
 										<select class="form-select rounded-0 bg-white" name="level" id="level">
 											<option value="0" selected>Pilih Level Jabatan</option>
 										</select>
@@ -109,9 +76,9 @@
 								</div>
 								<hr />
 								<div class="row mt-2">
-									<div class="col-md-4">
+									<div class="col-md-3">
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-9">
 										<button type="submit" class="d-flex float-end align-items-center btn btn-lg btn-primary bg-gradient border border-1 border-light p-0 rounded-3 overflow-hidden shadow">
 											<span class="px-3">Cari Pekerjaan</span>
 											<div class="bg-midnightBlue bg-gradient p-2">

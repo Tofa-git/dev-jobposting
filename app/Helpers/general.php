@@ -69,6 +69,39 @@ class general
         return $_kalimat;
     }
 
+    public static function getPublicToken(){
+        $_user = \Auth::user();
+        if(is_null($_user->public_token)){
+            $url = app_properties::apiHost()."/auth/create-token";
+            $headers = [
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/json',
+            ];
+            $options = [
+                'verify' => false,
+            ];
+            $date = now();
+            $date_req = now();
+            date_add($date, date_interval_create_from_date_string("5 hours"));
+            $param = [
+                'user' => $_user->email,
+                'origin' => config('app.url')
+                'role' => 'guest',
+                'date_request' => date_format($date_req, 'Y-m-d h:i:s'),
+                'date_expired' => date_format($date, 'Y-m-d h:i:s'),
+                'token' => app_properties::apiSecret(),
+            ];
+            $_result = Http::withHeaders($headers)
+                -> withOptions($options)
+                -> post($url, $param)
+                -> json();
+            $_hasil = json_decode(json_encode(@$_result));
+            return @$_hasil->token;
+        }else{
+            return null;
+        }
+    }
+
     public static function getToken(){
         $_user = \Auth::user();
         if(is_null($_user->access_token)){

@@ -16,3 +16,7 @@ function getChildWilayahAdministrasi(obj, _type){
 		}
 	});
 }
+
+$(document).on('change', '#provinsi', function(){
+	alert($(this).attr('data-target'));
+});

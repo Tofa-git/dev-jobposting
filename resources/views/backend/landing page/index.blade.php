@@ -22,7 +22,7 @@
 					<div class="d-flex flex-fill list-group-item list-group-item-action list-group-item-light">
 						<div style="width: 30px;">{{ $_data->sequence }}</div>
 						<label class="flex-grow-1 form-check-label">{{ $_data->description }}</label>
-						@if(\Auth::user()->hasPermission('Landing Page', 'suspend'))
+						@if(\Auth::user()->hasPermission('Landing Page', 'suspend') && !str_contains($_data->target, 'partials.'))
 							@if($_data->status==='0')
 								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Sudah dimasukkan"><i class="material-icons-outlined p-1 d-flex fs-6">check</i></a>
 							@elseif($_data->status==='1')
@@ -130,7 +130,7 @@
 						</div>
 					</div>
 					<div class="border">
-						Data Widget
+						Target : {{ str_replace('.', '/', $_tampilan->widget->target) }}
 					</div>
 				</div>
 			@endforeach

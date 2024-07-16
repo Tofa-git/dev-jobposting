@@ -34,6 +34,7 @@ class LandingPageController extends Controller
                 -> orderBy('sequence')
                 -> get();
             $_tampilan = landing_page::where('status', '<>', '2')
+                -> with('widget')
                 -> orderBy('sequence')
                 -> get();
             $_result = view('home')
