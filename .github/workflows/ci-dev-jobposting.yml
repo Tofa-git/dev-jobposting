@@ -42,9 +42,31 @@ jobs:
       - name: Setup Deployer
         uses: atymic/deployer-php-action@master
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Deploy to Production
-        env:
-          DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
-        run: php vendor/bin/dep deploy prod --branch="main" -vv
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          # password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 1945
+          script: |
+            cd /var/www/html/dev-jobposting
+            git add .
+            git commit -m "Update"
+            git pull origin --rebase
+            git pull origin main
+            php artisan migrate:fresh --seed
+            npm run build
+            php artisan route:cache
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan config:clear
+            php artisan config:cache
+            php artisan optimize:clear
+            chown -R apache:apache /var/www/html/dev-jobposting
+            chown -R apache:apache /var/www/html/dev-jobposting/public/
+            chown -R apache:apache /var/www/html/dev-jobposting/storage/
+            chown -R apache:apache /var/www/html/dev-jobposting/bootstrap/
+            chown -R apache:apache /var/www/html/dev-jobposting/vendor/
+            chmod -R 777 /var/www/html/dev-jobposting/vendor/
+            chmod -R 777 /var/www/html/dev-jobposting/storage/
+            chmod -R 777 /var/www/html/dev-jobposting/bootstrap/
+            service nginx restart
