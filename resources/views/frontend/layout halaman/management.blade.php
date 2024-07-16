@@ -1,3 +1,4 @@
+@include('frontend.partials.header')
 @php
 	$_side_menu = \App\Models\frontend_menu::where('status', '0')
 		-> where('published_by', '>', 0)
@@ -9,7 +10,7 @@
 	<div class="container position-relative" style="z-index: 1">
 		<div class="d-flex align-items-center pt-5 pb-3">
 			<a href="/" class="text-decoration-none text-info fs-6">Beranda</a>
-			<i class="material-icons text-secondary px-2 small text-info">chevron_right</i>
+			<i class="material-icons-outlined text-secondary px-2 small text-info">chevron_right</i>
 			<span class="text-white fs-6">{{ $title }}</span>
 		</div>
 		<div class="fs-3 text-warning">{{ $title }}</div>
@@ -28,7 +29,7 @@
 					<ul class="list-group">
 						@foreach($_side_menu as $side_menu)
 							<a href="{{ route('halaman.index', [str_replace('/halaman/','',$side_menu->target_url), substr($side_menu->target_slug, 1)]) }}" class="d-flex align-items-center list-group-item list-group-item-action @if($active === substr($side_menu->target_slug, 1)) text-darkOrange fw-bold @endif">
-								<i class="material-icons text-secondary me-2 fs-6">chevron_right</i>
+								<i class="material-icons-outlined text-secondary me-2 fs-6">chevron_right</i>
 								<span>{{ $side_menu->caption }}</span>
 							</a>
 						@endforeach
