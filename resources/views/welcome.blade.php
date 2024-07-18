@@ -10,7 +10,7 @@
             -> orderBy('tbl_frontend_menu.sequence')
             -> get();
     @endphp
-@endsection
+@endsection 
 
 @section('body')
     @include($pages)
