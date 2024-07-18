@@ -54,7 +54,7 @@ jobs:
             git commit -m "Update"
             git pull origin --rebase
             git pull origin main
-            php artisan storage:link
+            #php artisan storage:link
             php artisan migrate
             #npm i
             #npm run build
