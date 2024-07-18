@@ -95,6 +95,6 @@
 
 	</div>
 	<div class="bg-dark bg-opacity-50 p-1 text-center">
-		<span class="text-light small">{!! $info->copyright !!}-a</span>
+		<span class="text-light small">{!! $info->copyright !!}</span>
 	</div>
 </div>

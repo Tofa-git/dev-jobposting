@@ -45,7 +45,7 @@
 									<div class="col-md-3">
 										<label for="provinsi">Lokasi Kerja</label>
 									</div>
-									<div class="col-md-9">
+									<div class="col-md-9" id="lokasi_kerja">
 										<select class="form-select rounded-0 bg-white" name="provinsi" id="provinsi" data-target="{{ route('public.wilayah-administrasi') }}">
 											<option value="0">Seluruh Provinsi</option>
 											@foreach($provinsi as $_provinsi)
@@ -98,22 +98,24 @@
 </div>
 
 <script type="module">
-	$('#provinsi').select2({
-		placeholder: 'Pilih provinsi',
-	});
-	$('#kabupaten').select2({
-		placeholder: 'Pilih kabupaten',
-	});
-	$('#kecamatan').select2({
-		placeholder: 'Pilih kecamatan',
-	});
-	$('#kelurahan').select2({
-		placeholder: 'Pilih kelurahan',
-	});
-	$('#bidang').select2({
-		placeholder: 'Pilih bidang',
-	});
-	$('#level').select2({
-		placeholder: 'Pilih level',
+	$(document).ready(function(){
+		$('#provinsi').select2({
+			placeholder: 'Pilih provinsi',
+		});
+		$('#kabupaten').select2({
+			placeholder: 'Pilih kabupaten',
+		});
+		$('#kecamatan').select2({
+			placeholder: 'Pilih kecamatan',
+		});
+		$('#kelurahan').select2({
+			placeholder: 'Pilih kelurahan',
+		});
+		$('#bidang').select2({
+			placeholder: 'Pilih bidang',
+		});
+		$('#level').select2({
+			placeholder: 'Pilih level',
+		});
 	});
 </script>
