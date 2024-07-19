@@ -26,7 +26,7 @@
     <script src="{{ asset('assets/js/public.js') }}"></script>
     @yield('header_style_script')
 </head>
-<body class="bg-light">
+<body class="bg-grey">
     @yield('body')
     @include('frontend.partials.menu mobile')
     @yield('footer_style_script')

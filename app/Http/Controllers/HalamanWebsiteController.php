@@ -53,8 +53,11 @@ class HalamanWebsiteController extends Controller
             if(isset($request->q)){
                 $_where.=' And description Like "%'.$request->q.'%"';
             }
+            if(isset($request->refid)){
+                $_where.=' And id_layout='.$request->refid;
+            }
             $_referensi = master_data_detail::where('status', '0')
-                -> where('refid', 14)
+                -> where('refid', 3)
                 -> withTrashed(false)
                 -> orderBy('sequence')
                 -> get();

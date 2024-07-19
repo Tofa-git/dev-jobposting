@@ -1,18 +1,18 @@
 <div class="bg-light">
 <div class="container">
 <div class="pb-4 pt-4">
-	<div class="mt-3 d-flex justify-content-center">
-		<h3 class="d-flex align-items-center">
-			<div style="width: 50px">
+	<div class="mt-3 d-flex justify-content-start justify-content-sm-center text-nowrap">
+		<h4 class="d-flex align-items-center">
+			<div class="d-none d-sm-block" style="width: 50px">
 				<div style="border-top: 1px solid #cccccc; height: 1px;"></div>
 			</div>
-			<span class="px-4">
+			<span class="px-2">
 				Informasi <span class="text-primary" style="font-family: 'Caveat', cursive; font-size: 22pt; font-weight: bold">Lowongan</span>
 			</span>
 			<div style="width: 50px">
 				<div style="border-top: 1px solid #cccccc; height: 1px;"></div>
 			</div>
-		</h3>
+		</h4>
 	</div>
 	<div class="text-lighter text-center text-secondary">
 		Temukan Peluang Karir yang Sesuai dengan Kepribadian dan Keahlian Anda

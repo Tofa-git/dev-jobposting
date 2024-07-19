@@ -96,7 +96,7 @@ class MasterDataDetailSeeder extends Seeder
                 'created_at'    => now(),
             ],[
                 'refid'         => 3,
-                'sequence'      => 2,
+                'sequence'      => 5,
                 'shortname'     => '/halaman/project',
                 'description'   => 'Project',
                 'status'        => '0',
@@ -350,7 +350,15 @@ class MasterDataDetailSeeder extends Seeder
                 'status'        => '0',
                 'created_by'    => 1,
                 'created_at'    => now(),
-            ],
+            ],[
+                'refid'         => 3,
+                'sequence'      => 6,
+                'shortname'     => '/halaman/kenapa-pilih-run8',
+                'description'   => 'Project',
+                'status'        => '0',
+                'created_by'    => 1,
+                'created_at'    => now(),
+            ]
         ]);
     }
 }

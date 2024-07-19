@@ -5,7 +5,7 @@
 @endphp
 
 <div id="carouselExampleIndicators" class="carousel slide bg-midnightBlue" data-bs-ride="carousel">
-    <div class="carousel-indicators m-0 me-2 p-0 d-none d-md-block w-auto" style="text-align: center; height: 25px;">
+    <div class="carousel-indicators m-0 me-2 p-0 w-auto" style="text-align: center; height: 25px;">
         @php $_i = 0; $_is_active = 'active'; $_current = true; @endphp
         @foreach($image_slider as $_image_slider)
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $_i }}" class="bg-success bg-gradient {{ $_is_active }}" @if($_current) aria-current="true" @endif style="height: 10px" aria-label="Slide {{ $_i + 1 }}"></button>
@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class="bg-midnightBlue" style="height: 250px; margin-top: -1px;"></div>
-<div class="sliderCurva bg-light"></div>
+<div class="sliderCurva bg-grey"></div>
 
 <style type="text/css">
       .sliderCurva{

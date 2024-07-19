@@ -17,6 +17,7 @@ html, body{
 .bg-white{background-color: white;}
 .bg-darkOrange{background-color: darkOrange!important;}
 .bg-darkGreen{background-color: darkGreen!important;}
+.bg-grey{background-color: #eeeeee!important;}
 .bg-customGray{
     background: #d6f9ff;
     background: -moz-linear-gradient(top,  #d6f9ff 0%, #9ee8fa 100%);
