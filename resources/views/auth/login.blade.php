@@ -18,7 +18,7 @@
                     <div class="position-absolute p-2">
                         <i class="material-icons-outlined text-secondary">people</i>
                     </div>
-                    <input placeholder="Email atau NIP" type="text" class="rounded-0 ps-5 form-control input-text @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus />
+                    <input placeholder="Username" type="text" class="rounded-0 ps-5 form-control input-text @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus />
                     <div onclick="globalFunction.clearValue(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Clear username">
                         <i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="position-absolute p-2">
                         <i class="material-icons-outlined text-secondary">lock</i>
                     </div>
-                    <input type="password" id="password" class="rounded-0 ps-5 form-control input-text @error('password') is-invalid @enderror" name="password" placeholder="Password" value="{{ old('password') }}" required />
+                    <input type="password" id="password" class="rounded-0 ps-5 form-control input-text @error('password') is-invalid @enderror" name="password" placeholder="Password" value="{{ old('password') }}" required autocomplete="new-password" />
                     <div onclick="globalFunction.togglePassword(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Show or hide password">
                         <i class="material-icons-outlined align-self-center text-info fs-5">visibility_off</i>
                     </div>
@@ -63,7 +63,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('footer_style_script')
 @endsection

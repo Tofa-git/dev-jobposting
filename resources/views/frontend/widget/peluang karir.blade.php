@@ -1,4 +1,4 @@
-<div class="bg-light">
+<div class="bg-grey">
 <div class="container">
 <div class="pb-4 pt-4">
 	<div class="mt-3 d-flex justify-content-start justify-content-sm-center text-nowrap">

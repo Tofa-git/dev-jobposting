@@ -34,7 +34,7 @@
 							<div class="card-body">
 								<h5 class="card-title">{{ $_i.'. '.$_alasan_pilih->title }}</h5>
 								<p class="card-text small text-secondary">{{ \App\Helpers\general::potongKalimat(strip_tags($_alasan_pilih->content), 80) }}</p>
-								<a href="#" class="text-decoration-none rounded-0 p-0 m-0 d-flex align-items-center">
+								<a href="{{ route('content.content', [$_alasan_pilih->layout->shortname, $_alasan_pilih->url]) }}" class="text-decoration-none rounded-0 p-0 m-0 d-flex align-items-center">
 									<span>Selengkapnya</span>
 									<i class="material-icons-outlined ms-2">arrow_forward</i>
 								</a>

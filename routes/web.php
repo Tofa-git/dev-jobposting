@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes(['register'=>false, 'verify' => true]);
+Auth::routes();
 
 /*Routing Backend*/
 $route_files = File::allFiles(__DIR__ . '/backend/');
