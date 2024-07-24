@@ -91,7 +91,32 @@ class DataClientController extends Controller
      */
     public function create()
     {
-        //
+        if(User::canCreate($this->namaMenu)){
+            $_jenis_client = master_data_detail::where('status', '0')
+                -> where('refid', 18)
+                -> withTrashed(false)
+                -> get();
+            $_jenis_kerjasama = master_data_detail::where('status', '0')
+                -> where('refid', 19)
+                -> withTrashed(false)
+                -> get();
+            $_type_perusahaan = master_data_detail::where('status', '0')
+                -> where('refid', 10)
+                -> withTrashed(false)
+                -> get();
+            $_result = view('backend.mitra dan klien.create')
+                -> with('title', $this->namaMenu)
+                -> with('jenis_client', $_jenis_client)
+                -> with('jenis_kerjasama', $_jenis_kerjasama)
+                -> with('type_perusahaan', $_type_perusahaan)
+                -> render();
+            $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
+            $_hasil['content'] = $_result;
+            $_hasil['title'] = 'Tambah '.$this->namaMenu;
+            return $this->success($_hasil);
+        }else{
+            return view('error.403');
+        }
     }
 
     /**

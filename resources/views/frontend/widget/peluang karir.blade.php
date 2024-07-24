@@ -17,8 +17,46 @@
 	<div class="text-lighter text-center text-secondary">
 		Temukan Peluang Karir yang Sesuai dengan Kepribadian dan Keahlian Anda
 	</div>
+	<div class="row mt-3">
+		<div class="col-sm-3">
+			<div class="d-flex flex-column align-items-center">
+				<div class="bg-midnightBlue justify-content-center align-items-center rounded-circle" style="width: 30px; height: 30px;">
+					<i class="material-icons-outlined text-light fs-5 p-1">work</i>
+				</div>
+				<span class="small">Pilih Bidang Pekerjaan</span>
+				<span class="small text-center lh-sm text-secondary">Pilih pekerjaan sesuai dengan minat, kemampuan, gaji, dan prospek kerja</span>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="d-flex flex-column align-items-center">
+				<div class="bg-midnightBlue justify-content-center align-items-center rounded-circle" style="width: 30px; height: 30px;">
+					<i class="material-icons-outlined text-light fs-5 p-1">tabs</i>
+				</div>
+				<span class="small">Klick Detail Informasi</span>
+				<span class="small text-center lh-sm text-secondary">Informasi berkaitan dengan pekerjaan atau posisi yang tersedia</span>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="d-flex flex-column align-items-center">
+				<div class="bg-midnightBlue justify-content-center align-items-center rounded-circle" style="width: 30px; height: 30px;">
+					<i class="material-icons-outlined text-light fs-5 p-1">people</i>
+				</div>
+				<span class="small">Bantu Teman Dengan Share</span>
+				<span class="small text-center lh-sm text-secondary">Membantu berbagi informasi pekerjaan dengan teman</span>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="d-flex flex-column align-items-center">
+				<div class="bg-midnightBlue justify-content-center align-items-center rounded-circle" style="width: 30px; height: 30px;">
+					<i class="material-icons-outlined text-light fs-5 p-1">description</i>
+				</div>
+				<span class="small">Klick Lamar, Ayo Kamu Bisa</span>
+				<span class="small text-center lh-sm text-secondary">Ajukan diri untuk mendapatkan pekerjaan di suatu perusahaan</span>
+			</div>
+		</div>
+	</div>
 	<div class="mt-4 d-flex flex-column flex-sm-row justify-content-center">
-		<h3 class="text-secondary fw-bold">Informasi lowongan tidak ditemukan!</h3>
+		<h3 class="text-dark text-lighter">Informasi lowongan tidak ditemukan!</h3>
 	</div>
 	<div class="row mt-3">
 		<div class="col-12">

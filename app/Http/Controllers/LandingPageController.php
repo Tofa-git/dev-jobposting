@@ -175,6 +175,10 @@ class LandingPageController extends Controller
                     'target'        => $request->target,
                     'updated_by'    => \Auth::user()->id,
             ]);
+            landing_page::where('id_widget', $id)
+                -> update([
+                    'sequence'      => $request->sequence,
+            ]);
             logActivities::addToLog('Landing Page', 'Edit Landing Page', $request->nama, '0');
             return Redirect::to(route('landing-page.index'))
                 -> with('message', 'Widget berhasil diupdate');
