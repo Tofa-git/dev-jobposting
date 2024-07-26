@@ -29,16 +29,17 @@ class general
         return $dt->isoFormat($format);        
     }
 
-    function waktuPosting($tanggal){
+    public static function waktuPosting($tanggal){
         $waktu = date_create($tanggal);
         $waktu_sekarang = date_create();
         $selisih = date_diff($waktu, $waktu_sekarang);
-        
+        $dt = new Carbon($waktu);
+        setlocale(LC_TIME, 'IND');
         if($selisih->d > 0){
-            $dt = new Carbon($waktu);
-            setlocale(LC_TIME, 'IND');
-            return $dt->formatLocalized('%A, %d %B %Y');
+            return $dt->isoFormat('dddd, D MMMM Y');
         }else{
+            return $dt->diffForHumans();
+            /*
             if($selisih->h > 0){
                 return (int)$selisih->h.' Jam yang lalu';
             }elseif($selisih->i > 0){
@@ -46,6 +47,7 @@ class general
             }else{
                 return 'Baru saja';
             }
+            */
         }
     }
 

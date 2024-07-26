@@ -218,30 +218,28 @@ class frontendController extends Controller
         }
     }
 
-    public function content(Request $request, $content)
+    public function content(Request $request, $layout, $page)
     {
         if(app_properties::haveFrontend()){
-            $_active = $content;
-            $_info = app_properties::first();
-            if(!is_null($content)){
-                $_tema_pencapaian = master_data_detail::where('status', '0')
-                    -> where('refid', 7)
-                    -> get();
-                $_kategori_pencapaian = master_data_detail::where('status', '0')
-                    -> where('refid', 8)
-                    -> get();
-                $_data_capaian = capaian::where('status', '0')
+            $_active = $layout;
+            $_active_page = $page;
+            if(!is_null($layout) && !is_null($page)){
+                $_data = halaman_website::where('url', '/'.$page)
+                    -> with('layout')
+                    -> first();
+                $_side_menu = halaman_website::select('id', 'id_layout', 'title', 'url')
+                    -> with('layout')
                     -> where('published_by', '>', 0)
-                    -> with('photoUtama')
+                    -> where('status', '0')
+                    -> where('id_layout', $_data->id_layout)
                     -> get();
-                $_result = view('capaian')
-                    -> with('pages', 'frontend.'.$content)
+                $_result = view('welcome')
+                    -> with('pages', 'frontend.layout halaman.'.str_replace('-', ' ', $layout))
                     -> with('title', env('APP_NAME'))
-                    -> with('data_pencapaian', $_data_capaian)
-                    -> with('tema_pencapaian', $_tema_pencapaian)
-                    -> with('kategori_pencapaian', $_kategori_pencapaian)
-                    -> with('info', $_info)
+                    -> with('content', $_data)
+                    -> with('side_menu', $_side_menu)
                     -> with('active', $_active)
+                    -> with('active_page', $_active_page)
                     -> render();
             }else{
 

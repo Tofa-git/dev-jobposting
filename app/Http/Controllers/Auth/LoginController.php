@@ -54,7 +54,7 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'     => 'required|regex:/^[a-zA-Z0-9\s\_\.\@\-]+$/',
-            'password'  => 'required|min:8',
+//            'password'  => 'required|min:8',
             'g-recaptcha-response'  => 'required|captcha',
         ]);
     }

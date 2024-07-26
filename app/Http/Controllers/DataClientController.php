@@ -69,6 +69,10 @@ class DataClientController extends Controller
                 -> withTrashed(false)
                 -> paginate($_total)
                 -> appends(request()->query());
+            $_tab_active = 'mitra perusahaan';
+            if(isset($request->tab)){
+                $_tab_active = $request->tab;
+            }
             $_result = view('home')
                 -> with('pages', 'backend.mitra dan klien.index')
                 -> with('title', $this->namaMenu)
@@ -77,6 +81,7 @@ class DataClientController extends Controller
                 -> with('jenis_client', $_jenis_client)
                 -> with('jenis_kerjasama', $_jenis_kerjasama)
                 -> with('type_bisnis', $_type_bisnis)
+                -> with('tab_active', $_tab_active)
                 -> with('total', $_total)
                 -> render();
             $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
@@ -89,7 +94,7 @@ class DataClientController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         if(User::canCreate($this->namaMenu)){
             $_jenis_client = master_data_detail::where('status', '0')

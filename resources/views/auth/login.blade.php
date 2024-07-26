@@ -56,10 +56,12 @@
                         <i class="material-icons-outlined align-self-center">play_circle_outline</i>
                     </button>
                 </div>
+                <div class="mt-2">atau</div>
+                <div class="mt-2"><a href="/register">Registrasi</a> jika belum punya akun</div>
             </form>
-                <div class="mt-4">
-                    <span class="small">{!! @$data->copyright !!}</span>
-                </div>
+            <div class="mt-4">
+                <span class="small text-secondary">{!! @$data->copyright !!}</span>
+            </div>
         </div>
     </div>
 </div>

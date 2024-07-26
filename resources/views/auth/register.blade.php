@@ -18,6 +18,7 @@
                     <span class="small lh-sm fw-light">{{ @$data->icon_text_2 }}</span>
                 </div>
             </div>
+            <h3 class="mt-3">Registrasi Akun</h3>
             <form method="POST" action="{{ route('register') }}" onsubmit="return globalFunction.checkSubmission(this)">
                 @csrf
                 <div class="d-flex mt-4">
@@ -38,24 +39,6 @@
                         <i class="material-icons-outlined align-self-center text-white fs-5">clear</i>
                     </div>
                 </div>
-                <div class="d-flex mt-3">
-                    <div class="position-absolute p-2">
-                        <i class="material-icons-outlined text-secondary">lock</i>
-                    </div>
-                    <input type="password" id="password" name="password" class="rounded-0 ps-5 form-control input-text @error('password') is-invalid @enderror" placeholder="Password" value="{{ old('password') }}" autocomplete="new-password" />
-                    <div onclick="globalFunction.togglePassword(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Show or hide password">
-                        <i class="material-icons-outlined align-self-center text-info fs-5">visibility_off</i>
-                    </div>
-                </div>
-                <div class="d-flex mt-3">
-                    <div class="position-absolute p-2">
-                        <i class="material-icons-outlined text-secondary">lock</i>
-                    </div>
-                    <input type="password" id="password-confirm" name="password-confirm" class="rounded-0 ps-5 form-control input-text @error('password-confirm') is-invalid @enderror" placeholder="Konfirmasi Password" value="{{ old('password-confirm') }}" required />
-                    <div onclick="globalFunction.togglePassword(event)" class="p-2 bg-secondary d-flex" style="cursor: pointer" title="Show or hide password">
-                        <i class="material-icons-outlined align-self-center text-info fs-5">visibility_off</i>
-                    </div>
-                </div>
                 <div class="mt-3 bg-transparent w-100 p-0" style="overflow: hidden;">
                     {!! NoCaptcha::display() !!}
                 </div>
@@ -70,9 +53,11 @@
                         <i class="material-icons-outlined align-self-center">play_circle_outline</i>
                     </button>
                 </div>
+                <div class="mt-2">atau</div>
+                <div class="mt-2"><a href="/login">Login</a> jika sudah punya akun</div>
             </form>
                 <div class="mt-4">
-                    <span class="small">{!! @$data->copyright !!}</span>
+                    <span class="small text-secondary">{!! @$data->copyright !!}</span>
                 </div>
         </div>
     </div>
