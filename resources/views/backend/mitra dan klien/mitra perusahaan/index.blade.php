@@ -16,7 +16,7 @@
                     </form>
                 </div>
                 <div class="p-2 d-flex">
-                    <button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('mitra-dan-klien.create') }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
+                    <button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('mitra-dan-klien.create', ['ref'=>'mitra perusahaan']) }}" class="p-1 px-2 d-flex align-items-center btn btn-warning bg-gradient p-0">
                         <i class="material-icons-outlined align-middle align-self-center">add</i>
                         <div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
                             <span class="visually-hidden">Loading...</span>
@@ -102,3 +102,31 @@
                 </div>
             </div>
         </div>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search Options</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="row">
+                <div class="col-sm-4 small">Tampilkan</div>
+                <div class="col-sm-8">
+                    <select class="form-select bg-white" name="total">
+                        <option value="25" @if((int)$total === 25) selected @endif>25</option>
+                        <option value="50" @if((int)$total === 50) selected @endif>50</option>
+                        <option value="100" @if((int)$total === 100) selected @endif>100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-4 small">Deskripsi</div>
+                <div class="col-sm-8"><input type="text" class="form-control bg-white" name="q" placeholder="Deskripsi data" value="{{ @$_REQUEST['q'] }}" /></div>
+            </div>
+            <hr />
+            <button class="btn btn-primary bg-gradient">Lakukan Pencarian</button>
+        </form>
+    </div>
+</div>

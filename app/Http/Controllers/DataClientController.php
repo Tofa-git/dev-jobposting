@@ -34,11 +34,13 @@ class DataClientController extends Controller
                 [
                     'total'     => 'nullable|numeric|gt:0',
                     'q'         => 'nullable|regex:/^[a-zA-Z0-9\s]+$/|max:255',
+                    'tab'       => 'nullable|regex:/^[a-z\s]+$/|max:32',
                 ],
                 [
                     'total.numeric' => 'Jumlah baris harus bertipe numeric!',
                     'total.gt' => 'Jumlah baris harus lebih besar dari 0!',
-                    'q.regex' => 'Deskripsi yang anda masukkan mengandung karakter yang dilarang!'
+                    'q.regex' => 'Deskripsi yang anda masukkan mengandung karakter yang dilarang!',
+                    'tab.regex' => 'Tab yang anda pilih salah!',
                 ]
             );
             if ($validator->fails()) {
@@ -97,6 +99,20 @@ class DataClientController extends Controller
     public function create(Request $request)
     {
         if(User::canCreate($this->namaMenu)){
+            $validator = Validator::make($request->all(), 
+                [
+                    'ref'   => 'required|regex:/^[a-z\s]+$/|max:32',
+                ],
+                [
+                    'required' => 'Referensi tab tidak boleh kosong!',
+                    'regex' => 'Tab yang anda pilih salah!',
+                    'max' => 'Maksimal karakter tab 32!'
+                ]
+            );
+            if ($validator->fails()) {
+                return Redirect::to(url()->previous())
+                    -> withErrors($validator);
+            }
             $_jenis_client = master_data_detail::where('status', '0')
                 -> where('refid', 18)
                 -> withTrashed(false)
