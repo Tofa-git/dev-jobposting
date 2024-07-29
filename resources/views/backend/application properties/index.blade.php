@@ -286,7 +286,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <input type="password" name="password" id="password" class="form-control bg-white @error('password') is-invalid @enderror" value="{{ base64_decode($data->mail_password) }}" maxlength="64" />
-                                <div class="p-2 bg-secondary rounded-end-2 d-flex hideShowPassword" style="cursor: pointer" title="Show or hide password">
+                                <div class="p-2 bg-secondary rounded-end-2 d-flex" onclick="globalFunction.togglePassword(event)" style="cursor: pointer" title="Show or hide password">
                                     <i class="material-icons-outlined align-self-center text-info fs-5">visibility_off</i>
                                 </div>
                             </div>

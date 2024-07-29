@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\frontend\frontendController;
+use App\Http\Controllers\frontend\otpController;
 
 Route::get('/', [frontendController::class, 'index'])->name('welcome.index');
 Route::get('/halaman/{layout}/{page}', [frontendController::class, 'halaman'])->name('halaman.index');
@@ -13,3 +14,9 @@ Route::get('/content/cari-karyawan', [frontendController::class, 'cariKaryawan']
 
 //General
 Route::get('file-manager/link-url', [frontendController::class, 'fileLinkUrl']);
+
+//OTP Login
+Route::get('login', [otpController::class, 'showLogin'])->name('otp.show-login');
+Route::post('generate', [otpController::class, 'generate'])->name('otp.generate');
+Route::get('otp/{id}', [otpController::class, 'showOtp'])->name('otp.show-otp');
+Route::post('check-otp', [otpController::class, 'checkOtp'])->name('otp.check-otp');

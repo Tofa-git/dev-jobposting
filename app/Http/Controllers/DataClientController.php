@@ -11,6 +11,7 @@ use App\Helpers\general;
 use App\Traits\apiResponser;
 use Validator;
 use Redirect;
+use App\Models\app_properties;
 
 class DataClientController extends Controller
 {
@@ -145,7 +146,17 @@ class DataClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        try{
+            app_properties::setMailConfig();
+
+            Mail::to('susilo2305@gmail.com')->send(new TokenEmail());
+            return Redirect::to(url()->previous())
+                -> with('message', 'Email berhasil dikirim');
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+        */
     }
 
     /**
