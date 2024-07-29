@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\data_file;
 
 class TokenEmail extends Mailable
 {
@@ -16,9 +17,9 @@ class TokenEmail extends Mailable
     /**
      * Create a new message instance.
      */
+
     public function __construct(public $kode)
     {
-        //
     }
 
     /**
@@ -38,7 +39,9 @@ class TokenEmail extends Mailable
     {
         return new Content(
             view: 'mail.email-otp',
-            with: ['kode'=>$this->kode],
+            with: [
+                'kode' => $this->kode,
+            ],
         );
     }
 

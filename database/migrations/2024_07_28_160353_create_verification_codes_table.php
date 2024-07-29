@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('otp');
+            $table->char('param', 36);
             $table->timestamp('expired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();

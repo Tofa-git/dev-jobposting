@@ -12,6 +12,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\Mail\TokenEmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class otpController extends Controller
 {
@@ -54,11 +55,12 @@ class otpController extends Controller
                 $kode = verification_code::create([
                     'user_id' => $check_user->id,
                     'otp' => rand(123456, 999999),
-                    'expired_at' => Carbon::now()->addMinutes(2)
+                    'expired_at' => Carbon::now()->addMinutes(2),
+                    'param' => Str::uuid(),
                 ]);
                 app_properties::setMailConfig();
                 Mail::to($check_user->email)->send(new TokenEmail($kode));
-                return Redirect::to(route('otp.show-otp', base64_encode($check_user->email)))
+                return Redirect::to(route('otp.show-otp', $kode->param))
                     -> with('message', 'Check inbox email anda untuk melihat kode OTP');
             }catch(\Exception $e){
                 dd($e->getMessage());
@@ -76,8 +78,20 @@ class otpController extends Controller
     {
         $_data = app_properties::whereRaw('status="0"')
             -> first();
-        return view('auth.otpcode')
-            -> with('data', $_data);
+        $_param = verification_code::where('param', $id)
+            -> first();
+        if($_param){
+            if($_param->expired_at > now()){
+                return view('auth.otpcode')
+                    -> with('data', $_data)
+                    -> with('param', $_param);
+            }else{
+                return view('auth.otpexpired')
+                    -> with('data', $_data);
+            }
+        }else{
+            return view('error.403');
+        }
     }
 
 }

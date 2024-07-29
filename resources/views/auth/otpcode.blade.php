@@ -26,8 +26,10 @@
                         OTP yang anda masukkan salah!
                     </div>
                 @enderror
+                <div class="mt-3">Kode OTP akan expired pada :</div>
+                <div><strong>{{ $param->expired_at }}</strong></div>
                 <div>
-                    <button type="submit" class="btn btn-primary bg-gradient d-flex justify-content-center w-100 mt-4">
+                    <button type="submit" class="btn btn-success bg-gradient d-flex justify-content-center w-100 mt-4">
                         <span class="px-2">Sign In</span>
                         <i class="material-icons-outlined align-self-center">play_circle_outline</i>
                     </button>
