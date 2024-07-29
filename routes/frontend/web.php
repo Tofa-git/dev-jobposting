@@ -20,4 +20,7 @@ Route::get('login', [otpController::class, 'showLogin'])->name('login');
 Route::post('generate', [otpController::class, 'generate'])->name('otp.generate');
 Route::get('otp/{id}', [otpController::class, 'showOtp'])->name('otp.show-otp');
 Route::post('check-otp/{id}', [otpController::class, 'checkOtp'])->name('otp.check-otp');
+Route::get('register', [otpController::class, 'showRegister'])->name('register');
+Route::post('register', [otpController::class, 'postRegister'])->name('post-register');
+
 Route::post('logout', [otpController::class, 'logout'])->name('logout');

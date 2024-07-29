@@ -129,4 +129,46 @@ class otpController extends Controller
         return Redirect::to(route('login'));
     }
 
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), 
+            [
+                'email'         => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\_\.\@\-]+$/',
+                'nama_lengkap'  => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\s\.\,]+$/',
+                'g-recaptcha-response'  => 'required|captcha',
+            ],[
+                'email.required' => 'Username tidak boleh kosong!',
+                'email.regex' => 'Username mengandung karakter yang dilarang!',
+                'email.max' => 'Jumlah karakter maksimal 64!',
+                'email.min' => 'Jumlah karakter minimal 8!',
+                'nama_lengkap.required' => 'Nama lengkap tidak boleh kosong!',
+                'nama_lengkap.min' => 'Jumlah karakter nama lengkap minimal 8!',
+                'nama_lengkap.max' => 'Jumlah karakter nama lengkap maksimal 64!',
+                'nama_lengkap.regex' => 'Nama lengkap mengandung karakter yang dilarang!',
+            ]
+        );
+        if ($validator->fails()) {
+            return Redirect::to(url()->previous())
+                -> withErrors($validator);
+        }
+        User::create([
+            'name'  => $request->nama_lengkap,
+            'email' => $request->email,
+        ]);
+        try{
+            app_properties::setMailConfig();
+            Mail::to($check_user->email)->send(new TokenEmail($kode));
+            return Redirect::to(route('otp.show-otp', $kode->param))
+                -> with('message', 'Check inbox email anda untuk melihat kode OTP');
+        }catch(\Exception $e){
+            dd($e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+    }
+
 }
