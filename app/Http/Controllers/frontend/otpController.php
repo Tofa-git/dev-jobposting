@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use App\Mail\TokenEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class otpController extends Controller
 {
@@ -55,7 +57,7 @@ class otpController extends Controller
                 $kode = verification_code::create([
                     'user_id' => $check_user->id,
                     'otp' => rand(123456, 999999),
-                    'expired_at' => Carbon::now()->addMinutes(2),
+                    'expired_at' => Carbon::now()->addMinutes(5),
                     'param' => Str::uuid(),
                 ]);
                 app_properties::setMailConfig();
@@ -92,6 +94,39 @@ class otpController extends Controller
         }else{
             return view('error.403');
         }
+    }
+
+    public function checkOtp($id)
+    {
+        $_check = verification_code::where('param', $id)
+            -> first();
+        if($_check){
+            if($_check->expired_at > now()){
+                $user = User::find($_check->user_id);
+                if ($user){
+                    $_check->update([
+                        'expired_at' => Carbon::now()
+                    ]);
+                    Auth::login($user);
+                    return Redirect::to(route('dashboard.index'));
+                }else{
+                    return view('error.403');
+                }
+            }else{
+                $_data = app_properties::whereRaw('status="0"')
+                    -> first();
+                return view('auth.otpexpired')
+                    -> with('data', $_data);
+            }
+        }else{
+            return view('error.403');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return Redirect::to(route('login'));
     }
 
 }

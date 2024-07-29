@@ -16,7 +16,8 @@ Route::get('/content/cari-karyawan', [frontendController::class, 'cariKaryawan']
 Route::get('file-manager/link-url', [frontendController::class, 'fileLinkUrl']);
 
 //OTP Login
-Route::get('login', [otpController::class, 'showLogin'])->name('otp.show-login');
+Route::get('login', [otpController::class, 'showLogin'])->name('login');
 Route::post('generate', [otpController::class, 'generate'])->name('otp.generate');
 Route::get('otp/{id}', [otpController::class, 'showOtp'])->name('otp.show-otp');
-Route::post('check-otp', [otpController::class, 'checkOtp'])->name('otp.check-otp');
+Route::post('check-otp/{id}', [otpController::class, 'checkOtp'])->name('otp.check-otp');
+Route::post('logout', [otpController::class, 'logout'])->name('logout');

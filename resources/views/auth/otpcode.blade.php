@@ -13,7 +13,7 @@
                 </div>
             </div>
             <h3 class="mt-3">Masukan Kode OTP</h3>
-            <form method="POST" action="{{ route('otp.check-otp') }}" onsubmit="return globalFunction.checkSubmission(this)">
+            <form method="POST" action="{{ route('otp.check-otp', $param->param) }}" onsubmit="return globalFunction.checkSubmission(this)">
                 @csrf
                 <div class="d-flex align-items-sm-center mt-4">
                     <div class="position-absolute p-2">

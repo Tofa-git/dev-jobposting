@@ -44,9 +44,9 @@
 							</div>
 						</div>
 						<div class="border-top border-1 p-2">
-							<a href="{{ route('logout') }}" role="button" class="btn btn-danger rounded-0" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							<button class="btn btn-danger rounded-0" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								{{ __('Logout') }}
-							</a>
+							</button>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 								@csrf
 							</form>
