@@ -43,8 +43,10 @@ class User extends Authenticatable
         'androidId',
         'noHp',
         'id_div',
+        'activation_expired_at',
+        'param',
     ];
-
+    
     /**
      * The attributes that should be hidden for serialization.
      *

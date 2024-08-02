@@ -16,11 +16,12 @@ Route::get('/content/cari-karyawan', [frontendController::class, 'cariKaryawan']
 Route::get('file-manager/link-url', [frontendController::class, 'fileLinkUrl']);
 
 //OTP Login
-Route::get('login', [otpController::class, 'showLogin'])->name('login');
+Route::get('login', [otpController::class, 'showLogin'])->name('otp.login');
 Route::post('generate', [otpController::class, 'generate'])->name('otp.generate');
 Route::get('otp/{id}', [otpController::class, 'showOtp'])->name('otp.show-otp');
 Route::post('check-otp/{id}', [otpController::class, 'checkOtp'])->name('otp.check-otp');
-Route::get('register', [otpController::class, 'showRegister'])->name('register');
-Route::post('register', [otpController::class, 'postRegister'])->name('post-register');
+Route::get('register', [otpController::class, 'showRegister'])->name('otp.register');
+Route::post('register', [otpController::class, 'postRegister'])->name('otp.post-register');
+Route::get('activation/{id}', [otpController::class, 'activation'])->name('otp.activation');
 
-Route::post('logout', [otpController::class, 'logout'])->name('logout');
+Route::post('logout', [otpController::class, 'logout'])->name('otp.logout')->middleware('auth');

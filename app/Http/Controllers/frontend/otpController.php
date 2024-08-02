@@ -11,10 +11,12 @@ use Validator;
 use Redirect;
 use Carbon\Carbon;
 use App\Mail\TokenEmail;
+use App\Mail\ActivationEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class otpController extends Controller
 {
@@ -65,7 +67,6 @@ class otpController extends Controller
                 return Redirect::to(route('otp.show-otp', $kode->param))
                     -> with('message', 'Check inbox email anda untuk melihat kode OTP');
             }catch(\Exception $e){
-                dd($e->getMessage());
                 return redirect()->back()->withErrors($e->getMessage());
             }
         }else{
@@ -138,14 +139,14 @@ class otpController extends Controller
     {
         $validator = Validator::make($request->all(), 
             [
-                'email'         => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\_\.\@\-]+$/',
+                'username'      => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\_\.\@\-]+$/',
                 'nama_lengkap'  => 'required|min:8|max:64|regex:/^[a-zA-Z0-9\s\.\,]+$/',
-                'g-recaptcha-response'  => 'required|captcha',
+//                'g-recaptcha-response'  => 'required|captcha',
             ],[
-                'email.required' => 'Username tidak boleh kosong!',
-                'email.regex' => 'Username mengandung karakter yang dilarang!',
-                'email.max' => 'Jumlah karakter maksimal 64!',
-                'email.min' => 'Jumlah karakter minimal 8!',
+                'username.required' => 'Username tidak boleh kosong!',
+                'username.regex' => 'Username mengandung karakter yang dilarang!',
+                'username.max' => 'Jumlah karakter maksimal 64!',
+                'username.min' => 'Jumlah karakter minimal 8!',
                 'nama_lengkap.required' => 'Nama lengkap tidak boleh kosong!',
                 'nama_lengkap.min' => 'Jumlah karakter nama lengkap minimal 8!',
                 'nama_lengkap.max' => 'Jumlah karakter nama lengkap maksimal 64!',
@@ -156,19 +157,41 @@ class otpController extends Controller
             return Redirect::to(url()->previous())
                 -> withErrors($validator);
         }
-        User::create([
-            'name'  => $request->nama_lengkap,
-            'email' => $request->email,
+        $_data = User::create([
+            'name' => $request->nama_lengkap,
+            'email' => $request->username,
+            'role' => 44, //General Account
+            'activation_expired_at' => Carbon::now()->addHours(12),
+            'password' => Hash::make((string)rand(10000000, 99999999)),
+            'param' => Str::uuid(),
         ]);
         try{
             app_properties::setMailConfig();
-            Mail::to($check_user->email)->send(new TokenEmail($kode));
-            return Redirect::to(route('otp.show-otp', $kode->param))
-                -> with('message', 'Check inbox email anda untuk melihat kode OTP');
+            Mail::to($request->username)->send(new ActivationEmail($_data));
+            return Redirect::to('/')
+                -> with('message', 'Silahkan check Inbox email anda untuk proses berikutnya!');
         }catch(\Exception $e){
-            dd($e->getMessage());
             return redirect()->back()->withErrors($e->getMessage());
         }
+    }
+
+    public function activation($id)
+    {
+        $_check = User::where('param', $id)->first();
+        $now = Carbon::now();
+        if($_check){
+            if($now->isAfter($_check->activation_expired_at)){
+                dd('expired');
+            }else{
+                $_data = app_properties::whereRaw('status="0"')
+                    -> first();
+                return view('auth.register info')
+                    -> with('check', $_check)
+                    -> with('info', $_data);
+            }
+        }else{
+            dd('blank');
+        } 
     }
 
 }

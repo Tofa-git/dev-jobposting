@@ -40,7 +40,6 @@
                     </div>
                 </div>
                 <div class="mt-3 bg-transparent w-100 p-0" style="overflow: hidden;">
-                    {!! NoCaptcha::display() !!}
                 </div>
                 @if ($errors->has('g-recaptcha-response'))
                     <div class="alert alert-danger p-1 margin-0 mt-1" role="alert">
@@ -56,9 +55,9 @@
                 <div class="mt-2">atau</div>
                 <div class="mt-2"><a href="/login">Login</a> jika sudah punya akun</div>
             </form>
-                <div class="mt-4">
-                    <span class="small text-secondary">{!! @$data->copyright !!}</span>
-                </div>
+            <div class="mt-4">
+                <span class="small text-secondary">{!! @$data->copyright !!}</span>
+            </div>
         </div>
     </div>
 </div>

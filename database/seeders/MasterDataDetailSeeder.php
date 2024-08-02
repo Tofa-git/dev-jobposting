@@ -362,7 +362,7 @@ class MasterDataDetailSeeder extends Seeder
                 'refid'         => 1,
                 'sequence'      => 4,
                 'shortname'     => null,
-                'description'   => 'Client',
+                'description'   => 'General Account',
                 'status'        => '0',
                 'created_by'    => 1,
                 'created_at'    => now(),

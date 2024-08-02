@@ -16,7 +16,7 @@ class ActivationEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $data)
     {
         //
     }
@@ -38,6 +38,9 @@ class ActivationEmail extends Mailable
     {
         return new Content(
             view: 'mail.email-activation',
+            with: [
+                'data' => $this->data
+            ],
         );
     }
 

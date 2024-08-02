@@ -17,14 +17,18 @@
         @yield('body')
     </div>
     @yield('footer_style_script')
-    @if(Session::has('message'))
-        <script type="module">
-            toastr.options = {
-                "closeButton" : true,
-                "progressBar" : true
-            }
-            toastr.success("{{ session('message') }}");
-        </script>
-    @endif
+    <script type="module">
+        @if(session()->has('message'))
+            toastr.success("{{ Session::get('message') }}");
+        @endif
+        @if(session()->has('error'))
+            toastr.error("{{ Session::get('error') }}");
+        @endif
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
 </body>
 </html>

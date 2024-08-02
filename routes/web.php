@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Auth::routes();
+Route::group(['prefix' => '/admin-run8'], function () {
+	Auth::routes();
+});
 
 /*Routing Backend*/
 $route_files = File::allFiles(__DIR__ . '/backend/');
