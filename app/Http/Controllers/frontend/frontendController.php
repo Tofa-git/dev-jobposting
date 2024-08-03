@@ -45,11 +45,6 @@ class frontendController extends Controller
         }
 	}
 
-    public function maintenance()
-    {
-        return view('maintenance');
-    }
-
     public function halaman(Request $request, $layout, $halaman)
     {
         if(app_properties::haveFrontend()){
@@ -65,6 +60,32 @@ class frontendController extends Controller
                     -> with('pages', 'frontend.layout halaman.'.$layout)
                     -> with('title', $_data->title)
                     -> with('content', $_data)
+                    -> with('active', $_active)
+                    -> with('info', $_info)
+                    -> render();
+                $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
+                return $_result;
+            }else{
+                abort('404');
+            }
+        }else{
+            return Redirect::to(route('dashboard.index'));
+        }
+    }
+
+    public function indexContent(Request $request, $halaman)
+    {
+        if(app_properties::haveFrontend()){
+            $_active = $halaman;
+            $_key = ucwords(str_replace('-', ' ', $_active));
+            $_data = halaman_website::where('url','/'.$halaman)
+                -> where('published_by', '>', 0)
+                -> first();
+            if($_data){
+                $_info = app_properties::first();
+                $_result = view('welcome')
+                    -> with('pages', 'frontend.content')
+                    -> with('data', $_data)
                     -> with('active', $_active)
                     -> with('info', $_info)
                     -> render();
@@ -109,6 +130,14 @@ class frontendController extends Controller
             return Redirect::to(route('dashboard.index'));
         }
     }
+
+    public function fileLinkUrl(Request $request)
+    {
+        return data_file::getPublicImage(@$request->ref);
+    }
+
+
+    /*
 
     public function siaranPers(Request $request, $berita)
     {
@@ -296,9 +325,10 @@ class frontendController extends Controller
         return $this->success($_hasil);
     }
 
-    public function fileLinkUrl(Request $request)
+    public function maintenance()
     {
-        return data_file::getPublicImage(@$request->ref);
+        return view('maintenance');
     }
+    */
     
 }
