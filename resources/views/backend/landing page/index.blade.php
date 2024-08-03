@@ -22,7 +22,7 @@
 					<div class="d-flex flex-fill list-group-item list-group-item-action list-group-item-light">
 						<div style="width: 30px;">{{ $_data->sequence }}</div>
 						<label class="flex-grow-1 form-check-label">{{ $_data->description }}</label>
-						@if(\Auth::user()->hasPermission('Landing Page', 'suspend') && !str_contains($_data->target, 'partials.'))
+						@if(\Auth::user()->hasPermission($title, 'suspend') && !str_contains($_data->target, 'partials.'))
 							@if($_data->status==='0')
 								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Sudah dimasukkan"><i class="material-icons-outlined p-1 d-flex fs-6">check</i></a>
 							@elseif($_data->status==='1')
@@ -31,7 +31,7 @@
 								<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-secondary bg-gradient m-0 p-0 ps-2 pe-2"><i class="material-icons-outlined p-1 d-flex fs-6" title="Belum dimasukkan">block</i></a>
 							@endif
 						@endif
-						@if(\Auth::user()->hasPermission('Landing Page', 'update'))
+						@if(\Auth::user()->hasPermission($title, 'update'))
 							<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('landing-page.edit', $_data) }}" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Edit">
 								<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
 								<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
@@ -39,7 +39,7 @@
 								</div>
 							</button>
 						@endif
-						@if(\Auth::user()->hasPermission('Landing Page', 'delete'))
+						@if(\Auth::user()->hasPermission($title, 'delete'))
 							<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('landing-page.destroy', $_data) }}" class="d-inline">
 								@csrf()
 								@method('delete')
@@ -53,7 +53,7 @@
 				<div class="d-flex flex-fill list-group-item list-group-item-action list-group-item-light">
 					<div style="width: 30px;">{{ $_data->sequence }}</div>
 					<label class="flex-grow-1 form-check-label">{{ $_data->description }}</label>
-					@if(\Auth::user()->hasPermission('Landing Page', 'suspend'))
+					@if(\Auth::user()->hasPermission($title, 'suspend'))
 						@if($_data->status==='0')
 							<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Sudah dimasukkan"><i class="material-icons-outlined p-1 d-flex fs-6">check</i></a>
 						@elseif($_data->status==='1')
@@ -62,7 +62,7 @@
 							<a href="{{ route('landing-page.status', $_data->id) }}" role="button" class="flex-shrink-1 btn btn-sm btn-outline-secondary bg-gradient m-0 p-0 ps-2 pe-2"><i class="material-icons-outlined p-1 d-flex fs-6" title="Belum dimasukkan">block</i></a>
 						@endif
 					@endif
-					@if(\Auth::user()->hasPermission('Landing Page', 'update'))
+					@if(\Auth::user()->hasPermission($title, 'update'))
 						<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('landing-page.edit', $_data) }}" class="flex-shrink-1 btn btn-sm btn-outline-primary bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Edit">
 							<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
 							<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
@@ -70,7 +70,7 @@
 							</div>
 						</button>
 					@endif
-					@if(\Auth::user()->hasPermission('Landing Page', 'delete'))
+					@if(\Auth::user()->hasPermission($title, 'delete'))
 						<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('landing-page.destroy', $_data) }}" class="d-inline">
 							@csrf()
 							@method('delete')
@@ -92,15 +92,14 @@
 					<div class="d-flex flex-fill align-items-center m-1">
 						<label class="flex-grow-1 fw-bold">{{ $_tampilan->judul }}</label>
 						<div class="flex-shrink-1">
-							@if(\Auth::user()->hasPermission('Landing Page', 'suspend'))
+							@if(\Auth::user()->hasPermission($title, 'suspend'))
 								@if((int)$_tampilan->published_by > 0)
 									<a href="{{ route('landing-page.publish', $_tampilan->id) }}" role="button" class="btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2" title="Click for suspend">PUBLISH</a>
 								@else
 									<a href="{{ route('landing-page.publish', $_tampilan->id) }}" role="button" class="btn btn-sm btn-secondary m-0 p-0 ps-2 pe-2" title="Click for activate">DRAFT</a>
 								@endif
 							@endif
-
-							@if(\Auth::user()->hasPermission('Landing Page', 'suspend'))
+							@if(\Auth::user()->hasPermission($title, 'suspend'))
 								@if($_tampilan->status==='0')
 									<a href="{{ route('landing-page.status-widget', $_tampilan->id) }}" role="button" class="btn btn-sm btn-info bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Click for suspend">ACTIVE</a>
 								@elseif($_tampilan->status==='1')
@@ -110,16 +109,13 @@
 								@endif
 							@endif
 
-							@if(\Auth::user()->hasPermission('Landing Page', 'update'))
-								<button onclick="event.preventDefault(); globalFunction.loadContent(this)" data-attr="{{ route('landing-page.edit', $_data) }}" class="flex-shrink-1 btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Edit">
+							@if(\Auth::user()->hasPermission($title, 'update'))
+								<a href="{{ route('landing-page.edit-widget', $_tampilan->id) }}" class="flex-shrink-1 btn btn-sm btn-primary bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Edit" role="button">
 									<i class="material-icons-outlined p-1 d-flex fs-6">create</i>
-									<div class="spinner-border spinner-border-sm d-none m-spinner-small m-1" role="status">
-									<span class="visually-hidden">Loading...</span>
-									</div>
-								</button>
+								</a>
 							@endif
-							@if(\Auth::user()->hasPermission('Landing Page', 'delete'))
-								<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('landing-page.destroy', $_data) }}" class="d-inline">
+							@if(\Auth::user()->hasPermission($title, 'delete'))
+								<form method="post" onsubmit="return confirm('Are you sure want to delete this record?')" action="{{ route('landing-page.destroy', $_tampilan->id) }}" class="d-inline">
 									@csrf()
 									@method('delete')
 									<button type="submit" class="flex-shrink-1 btn btn-sm btn-danger bg-gradient m-0 p-0 ps-2 pe-2 ms-1" title="Delete" role="button">
@@ -130,7 +126,7 @@
 						</div>
 					</div>
 					<div class="border">
-						Target : {{ str_replace('.', '/', $_tampilan->widget->target) }}
+						Target : {{ @$_tampilan->widget->target ? str_replace('.', '/', $_tampilan->widget->target) : '-' }}
 					</div>
 				</div>
 			@endforeach

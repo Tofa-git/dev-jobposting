@@ -284,4 +284,71 @@ class LandingPageController extends Controller
         }
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function editWidget($id)
+    {
+        if(User::canUpdate($this->namaMenu)){
+            $_data = landing_page::with('widget')
+                -> find($id);
+            if($_data){
+                $_target_widget = widget::where('status', '0')
+                    -> get();
+                $_result = view('home')
+                -> with('pages', 'backend.landing page.edit widget')
+                    -> with('title', 'Edit Landing Page')
+                    -> with('activeMenu', $this->namaMenu)
+                    -> with('data', $_data)
+                    -> with('target_widget', $_target_widget)
+                    -> render();
+                $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
+                return $_result;
+            }else{
+                return view('error.404');
+            }
+        }else{
+            return view('error.403');
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function updateWidget(Request $request, $id)
+    {
+        if(User::canUpdate($this->namaMenu)){
+            $validator = Validator::make($request->all(),
+                [
+                    'sequence'  => 'required|numeric',
+                    'judul'      => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+                    'target'    => 'required|numeric',
+                ],
+                [
+                    'numeric' => 'Nilai :attribute yang anda masukkan salah!',
+                    'required' => ':attribute tidak boleh kosong!',
+                    'regex' => 'Nilai :attribute yang anda masukkan mengandung karakter yang dilarang!'
+                ]
+            );
+            if ($validator->fails()){
+                return Redirect::to(url()->previous())
+                    -> withErrors($validator)
+                    -> withInput();
+            }
+            landing_page::where('id', $id)
+                -> update([
+                    'sequence'      => $request->sequence,
+                    'judul'         => $request->judul,
+                    'id_widget'     => $request->target,
+                    'content'       => $request->bodyEditor,
+                    'updated_by'    => \Auth::user()->id,
+            ]);
+            logActivities::addToLog('Landing Page', 'Edit Landing Page', $request->judul, '0');
+            return Redirect::to(route('landing-page.index'))
+                -> with('message', 'Landing Page berhasil diupdate');
+        }else{
+            return view('error.403');
+        }
+    }
+
 }

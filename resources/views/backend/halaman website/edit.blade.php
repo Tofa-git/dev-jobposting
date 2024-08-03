@@ -92,15 +92,3 @@
 		toolbar: 'code | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
 	});
 </script>
-
-<style type="text/css">
-	#wrapper, .mce-tinymce,.mce-stack-layout, .mce-edit-area{
-		display: flex!important;
-		flex-direction: column;
-		flex: 1;
-		align-items:stretch;
-	}
-	.mce-tinymce iframe{
-		flex: 1;
-	}
-</style>

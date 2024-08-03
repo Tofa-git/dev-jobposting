@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('sequence')->default(0);
             $table->string('judul', 255);
-            $table->foreignId('id_widget')->constrained('tbl_widget');
+            $table->bigInteger('id_widget')->default(0);
+            $table->longText('content')->nullable();
             $table->bigInteger('published_by')->default(0);
             $table->dateTime('published_at')->nullable();
             $table->enum('status', ['0', '1', '2', '3'])->default('3');

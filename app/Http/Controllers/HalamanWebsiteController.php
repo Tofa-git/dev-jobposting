@@ -155,7 +155,7 @@ class HalamanWebsiteController extends Controller
                 'created_by'        => \Auth::user()->id,
             ]);
             logActivities::addToLog('Halaman Website', 'Tambah Halaman Website', $request->judul, '0');
-            return Redirect::to(route('halaman-website.index'))
+            return Redirect::to(route('halaman-website.index', ['refid'=>$request->layout]))
                 -> with('message', 'Halaman Website berhasil ditambah');
         }else{
             return view('error.403');
@@ -239,7 +239,7 @@ class HalamanWebsiteController extends Controller
                     'meta_description'  => $request->meta_description,
             ]);
             logActivities::addToLog('Halaman Website', 'Update Halaman Website', $request->judul, '0');
-            return Redirect::to(route('halaman-website.index'))
+            return Redirect::to(route('halaman-website.index', ['refid'=>$request->layout]))
                 -> with('message', 'Halaman Website berhasil diupdate');
         }else{
             return view('error.403');

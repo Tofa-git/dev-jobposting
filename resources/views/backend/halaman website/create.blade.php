@@ -13,7 +13,7 @@
 						<label for="layout" class="small fw-bold">Layout Halaman *)</label>
 						<select class="form-select bg-white @error('layout') is-invalid @enderror" id="layout" name="layout" required>
 							@foreach($layout as $_layout)
-								<option value="{{ $_layout->id }}">{{ $_layout->description }}</option>
+								<option value="{{ $_layout->id }}" @if((int)$_layout->id === (int)@$_REQUEST['refid']) selected @endif>{{ $_layout->description }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -88,15 +88,3 @@
 		toolbar: 'code | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
 	});
 </script>
-
-<style type="text/css">
-	#wrapper, .mce-tinymce,.mce-stack-layout, .mce-edit-area{
-		display: flex!important;
-		flex-direction: column;
-		flex: 1;
-		align-items:stretch;
-	}
-	.mce-tinymce iframe{
-		flex: 1;
-	}
-</style>
