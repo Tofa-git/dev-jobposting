@@ -64,11 +64,11 @@ jobs:
             php artisan config:clear
             php artisan config:cache
             php artisan optimize:clear
-            chown -R apache:apache /var/www/html/dev-jobposting
-            chown -R apache:apache /var/www/html/dev-jobposting/public/
-            chown -R apache:apache /var/www/html/dev-jobposting/storage/
-            chown -R apache:apache /var/www/html/dev-jobposting/bootstrap/
-            chown -R apache:apache /var/www/html/dev-jobposting/vendor/
+            chown -R nginx:nginx /var/www/html/dev-jobposting
+            chown -R nginx:nginx /var/www/html/dev-jobposting/public/
+            chown -R nginx:nginx /var/www/html/dev-jobposting/storage/
+            chown -R nginx:nginx /var/www/html/dev-jobposting/bootstrap/
+            chown -R nginx:nginx /var/www/html/dev-jobposting/vendor/
             chmod -R 777 /var/www/html/dev-jobposting/vendor/
             chmod -R 777 /var/www/html/dev-jobposting/storage/
             chmod -R 777 /var/www/html/dev-jobposting/bootstrap/
