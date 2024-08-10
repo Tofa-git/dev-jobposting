@@ -6,6 +6,8 @@ use App\Http\Controllers\frontend\otpController;
 Route::get('/', [frontendController::class, 'index'])->name('welcome.index');
 Route::get('/halaman/{layout}/{page}', [frontendController::class, 'halaman'])->name('halaman.index');
 Route::get('/content/{page}', [frontendController::class, 'indexContent'])->name('content.index-content');
+Route::get('/sub-content/{layout}/{page}', [frontendController::class, 'subContent'])->name('content.sub-content');
+
 
 //Content
 /*

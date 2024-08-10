@@ -99,6 +99,39 @@ class frontendController extends Controller
         }
     }
 
+    public function subContent(Request $request, $layout, $page)
+    {
+        if(app_properties::haveFrontend()){
+            $_active = $layout;
+            $_active_page = $page;
+            if(!is_null($layout) && !is_null($page)){
+                $_data = halaman_website::where('url', '/'.$page)
+                    -> with('layout')
+                    -> first();
+                $_side_menu = halaman_website::select('id', 'id_layout', 'title', 'url')
+                    -> with('layout')
+                    -> where('published_by', '>', 0)
+                    -> where('status', '0')
+                    -> where('id_layout', $_data->id_layout)
+                    -> get();
+                $_result = view('welcome')
+                    -> with('pages', 'frontend.layout halaman.'.str_replace('-', ' ', $layout))
+                    -> with('title', env('APP_NAME'))
+                    -> with('content', $_data)
+                    -> with('side_menu', $_side_menu)
+                    -> with('active', $_active)
+                    -> with('active_page', $_active_page)
+                    -> render();
+            }else{
+
+            }
+            $_result = str_replace('    ', '', preg_replace(array('/\r/', '/\n/', '/\t/'), '', $_result));
+            return $_result;
+        }else{
+            return Redirect::to(route('dashboard.index'));
+        }
+    }
+
     public function beritaDetail(Request $request, $berita)
     {
         if(app_properties::haveFrontend()){

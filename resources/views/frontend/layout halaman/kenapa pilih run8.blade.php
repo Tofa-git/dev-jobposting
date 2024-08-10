@@ -43,7 +43,7 @@
 					<h5 class="pb-2" style="border-bottom: 3px solid orange">Kenapa Pilih RUN8</h5>
 					<ul class="list-group">
 						@foreach($side_menu as $_side_menu)
-							<a href="{{ route('content.content', [$_side_menu->layout->shortname, substr($_side_menu->url, 1)]) }}" class="d-flex align-items-center list-group-item list-group-item-action @if($active_page === substr($_side_menu->url, 1)) text-darkOrange fw-bold @endif">
+							<a href="{{ route('halaman.index', [substr($_side_menu->layout->shortname,1), substr($_side_menu->url, 1)]) }}" class="d-flex align-items-center list-group-item list-group-item-action @if($active_page === substr($_side_menu->url, 1)) text-darkOrange fw-bold @endif">
 								<i class="material-icons-outlined text-secondary me-2 fs-6">chevron_right</i>
 								<span>{{ $_side_menu->title }}</span>
 							</a>
